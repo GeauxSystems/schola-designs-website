@@ -1317,5 +1317,21 @@
   })();
 
 </script>
+
+<!-- Netlify Identity: the default invite/reset email links here (the site
+     root), not to /admin/. This widget checks the address for an invite,
+     recovery, or confirmation token and opens the matching form on its
+     own; once someone finishes it, we send them to /admin/ to use the
+     editor. Editing the email itself to link straight to /admin/ requires
+     a paid Netlify plan (custom email templates), so this is the free
+     equivalent. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    netlifyIdentity.on('login', function () {
+      window.location.href = '/admin/';
+    });
+  }
+</script>
 </body>
 </html>
