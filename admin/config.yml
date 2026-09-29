@@ -1,0 +1,147 @@
+# Decap CMS configuration for Schola Designs & Consultation.
+#
+# This file defines every field Courtney can see and edit at /admin. It does
+# not touch layout, colors, or anything structural. Adding a field here
+# means updating the matching render code in case-studies.html / work.html
+# to use it; removing a field here does not delete it from the JSON, it
+# just stops showing it in the editor.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded case study photos are stored in the repo, and the public
+# path the live site uses to reach them. Netlify's Identity + Git Gateway
+# combination is what makes the login at /admin work without a separate
+# server; see the setup guide for how that gets turned on.
+media_folder: "images/case-studies"
+public_folder: "/images/case-studies"
+
+publish_mode: simple
+
+collections:
+  - name: "case_studies"
+    label: "Case Studies"
+    files:
+      - file: "content/case-studies.json"
+        label: "Case Studies Page"
+        name: "case_studies_file"
+        fields:
+          - label: "Case studies"
+            name: "case_studies"
+            widget: "list"
+            summary: "{{fields.client}}"
+            fields:
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options: ["placeholder", "published"]
+                hint: "Keep this on \"placeholder\" until the write-up is ready to go live. Switching to \"published\" is what makes the case study appear on the site and its /work page work."
+
+              - label: "Web address (slug)"
+                name: "slug"
+                widget: "string"
+                hint: "Lowercase, hyphens instead of spaces, no punctuation. This becomes the page's address, e.g. \"pelican-sweets\" becomes scholadesigns.com/work/pelican-sweets. Don't change this once a case study is published; it will break the link."
+
+              - label: "Client name"
+                name: "client"
+                widget: "string"
+                required: false
+
+              - label: "Headline"
+                name: "title"
+                widget: "string"
+                required: false
+                hint: "The big headline on the case study's own page. State the outcome, not just the client's name."
+
+              - label: "Headline highlight phrase"
+                name: "titleHighlight"
+                widget: "string"
+                required: false
+                hint: "Optional. Copy a short phrase exactly as it appears in the Headline above, and that phrase turns orange."
+
+              - label: "One-line situation"
+                name: "chapter"
+                widget: "string"
+                required: false
+                hint: "A short line under the client name, e.g. the \"before\" situation in one sentence."
+
+              - label: "Industry"
+                name: "industry"
+                widget: "string"
+                required: false
+
+              - label: "Overview summary"
+                name: "summary"
+                widget: "text"
+                required: false
+                hint: "One or two sentences shown on the Case Studies list page."
+
+              - label: "Overview highlight phrase"
+                name: "highlightPhrase"
+                widget: "string"
+                required: false
+                hint: "Optional. Copy a short phrase exactly as it appears in the Overview summary above, and that phrase turns orange on the card."
+
+              - label: "Photo"
+                name: "photo"
+                widget: "image"
+                required: false
+                hint: "Shown faded and in black and white behind the card on the Case Studies page. Leave empty until there's a real photo of the actual deliverable; don't use a stock photo as a placeholder."
+
+              - label: "Before"
+                name: "before"
+                widget: "string"
+                required: false
+
+              - label: "Before, one-sentence note"
+                name: "beforeNote"
+                widget: "string"
+                required: false
+
+              - label: "After"
+                name: "after"
+                widget: "string"
+                required: false
+
+              - label: "After, one-sentence note"
+                name: "afterNote"
+                widget: "string"
+                required: false
+
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                required: false
+                hint: "Optional highlight numbers, e.g. 40% / increase in first-time visits."
+                fields:
+                  - {label: "Number", name: "value", widget: "string"}
+                  - {label: "What it means", name: "label", widget: "string"}
+
+              - label: "Full write-up sections"
+                name: "body"
+                widget: "list"
+                required: false
+                hint: "Each section is a heading (e.g. \"The situation\") plus one or more paragraphs."
+                fields:
+                  - {label: "Section heading", name: "heading", widget: "string", required: false}
+                  - label: "Paragraphs"
+                    name: "paragraphs"
+                    widget: "list"
+                    field: {label: "Paragraph", name: "paragraph", widget: "text"}
+
+              - label: "Client quote"
+                name: "quoteText"
+                widget: "text"
+                required: false
+
+              - label: "Quote, client name"
+                name: "quoteName"
+                widget: "string"
+                required: false
+
+              - label: "Quote, client role"
+                name: "quoteRole"
+                widget: "string"
+                required: false
+                hint: "e.g. Owner, Riverbend Hardware"

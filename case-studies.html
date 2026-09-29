@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Studies | Schola Designs</title>
+<meta name="description" content="A few of the businesses Schola Designs has worked with, and what changed once we did.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--orange:#F25C05;
+    --black:#000000;
+    --white:#FFFFFF;
+    --gutter:clamp(20px,5vw,72px);
+    --maxw:1400px;
+
+    /* type scale (same tokens as homepage) */
+    --fs-display:clamp(2.1rem,8.4vw,4.5rem);
+    --lh-display:.94;
+    --fs-close:clamp(1.4rem,5.5vw,2.5rem);
+    --lh-close:1.05;
+    --fs-sub:clamp(1.14rem,4.4vw,1.5rem);
+    --fs-body:clamp(1.02rem,3.9vw,1.24rem);
+
+    --col-gap:clamp(28px,5vw,72px);
+    --pad-section:clamp(64px,10vw,132px);
+
+    --ease:160ms ease;
+    --btn-pad:20px 34px;
+    --btn-gap:26px;}
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{margin:0;
+    background:var(--white);
+    color:var(--black);
+    font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-weight:600;
+    -webkit-font-smoothing:antialiased;}
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  :focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+  .shell{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);}
+
+  /* ---------- buttons (identical to homepage) ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:space-between;gap:var(--btn-gap);
+    background:var(--orange);color:var(--white);text-decoration:none;
+    font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    line-height:1;border:0;cursor:pointer;font-size:clamp(.8rem,2.9vw,1rem);
+    width:100%;padding:var(--btn-pad);justify-content:center;}
+  .btn{transition:background var(--ease);}
+  .btn:hover{background:var(--black);}
+  .btn__arrow{width:34px;height:12px;flex:0 0 auto;}
+  @media (min-width:900px){
+    .btn{width:auto;justify-content:space-between;}
+  }
+
+  /* ---------- ghost/secondary link (same treatment as homepage hero secondary) ---------- */
+  .ghost-link{display:inline-flex;align-items:center;gap:10px;
+    font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--black);text-decoration:none;border-bottom:2px solid var(--black);
+    padding-bottom:6px;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;}
+  .ghost-link:hover{border-bottom-color:var(--orange);}
+  .ghost-link svg{width:22px;height:8px;flex:0 0 auto;}
+
+  /* ---------- eyebrow (identical to homepage) ---------- */
+  .eyebrow{display:flex;align-items:center;gap:16px;
+    margin:0 0 clamp(18px,2.4vw,26px);
+    font-size:.7rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.28em;
+    color:var(--orange);}
+  .eyebrow::before{content:"";display:block;width:44px;height:3px;
+    background:var(--orange);flex:0 0 auto;}
+
+  /* ---------- masthead (identical to homepage) ---------- */
+  .masthead{display:flex;align-items:center;justify-content:space-between;
+    gap:24px;padding-block:clamp(18px,3vw,30px);}
+  .masthead__logo{display:block;flex:0 0 auto;}
+  .masthead__logo svg{height:clamp(32px,7vw,34px);width:auto;}
+  .masthead__nav{display:none;}
+  .masthead__links{display:flex;gap:clamp(20px,3vw,42px);list-style:none;margin:0;padding:0;}
+  .masthead__links a{text-decoration:none;font-size:.95rem;font-weight:600;
+    padding-block:6px;border-bottom:2px solid transparent;}
+  .masthead__links a:hover{border-bottom-color:var(--orange);}
+  .masthead__cta{display:none;}
+  .btn--nav{padding:14px 22px;font-size:.72rem;letter-spacing:.16em;gap:0;width:auto;}
+  .burger{appearance:none;border:0;background:none;padding:8px;margin:-8px;cursor:pointer;flex:0 0 auto;}
+  .burger span{display:block;width:30px;height:3px;background:var(--black);margin:5px 0;}
+
+  /* ---------- mobile menu (identical to homepage) ---------- */
+  .menu{position:fixed;inset:0;background:var(--black);color:var(--white);
+    z-index:50;display:flex;flex-direction:column;padding:clamp(20px,5vw,40px);}
+  .menu[hidden]{display:none;}
+  .menu__top{display:flex;justify-content:flex-end;}
+  .menu__close{appearance:none;background:none;border:0;color:var(--white);
+    font-size:2.4rem;line-height:1;cursor:pointer;padding:4px 8px;}
+  .menu__list{list-style:none;margin:auto 0;padding:0;display:grid;gap:22px;}
+  .menu__list a{text-decoration:none;text-transform:uppercase;font-weight:800;
+    letter-spacing:-.01em;font-size:clamp(1.9rem,9vw,2.6rem);color:var(--white);}
+  .menu__list a:hover{color:var(--orange);}
+  .menu .btn{width:100%;padding:var(--btn-pad);}
+
+  @media (min-width:900px){
+    .burger{display:none;}
+    .masthead__nav{display:block;}
+    .masthead__cta{display:inline-flex;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none!important;}
+  }
+
+  /* ---------- footer (identical to homepage) ---------- */
+  .site-footer{
+    background:var(--black);color:rgba(255,255,255,.72);
+    padding-top:clamp(36px,5.5vw,52px);
+    padding-bottom:clamp(28px,4vw,40px);
+    border-top:1px solid rgba(255,255,255,.14);
+  }
+  .footer__top{
+    display:flex;flex-direction:column;align-items:center;gap:clamp(24px,4vw,0px);
+    text-align:center;
+  }
+  .footer__logo{display:block;}
+  .footer__logo svg{height:clamp(22px,5vw,28px);width:auto;}
+  .footer__nav{list-style:none;margin:0 auto;padding:0;max-width:300px;
+    display:flex;flex-wrap:wrap;justify-content:center;gap:12px clamp(16px,3vw,32px);
+  }
+  .footer__nav a{
+    color:rgba(255,255,255,.72);text-decoration:none;
+    font-size:.86rem;font-weight:600;
+  }
+  .footer__nav a:hover{color:var(--white);}
+  .footer__bottom{
+    margin-top:clamp(28px,4vw,36px);padding-top:clamp(20px,2.8vw,26px);
+    border-top:1px solid rgba(255,255,255,.1);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    text-align:center;
+  }
+  .footer__copy{font-size:.78rem;font-weight:500;color:rgba(255,255,255,.5);}
+  @media (min-width:900px){
+    .footer__nav{max-width:none;margin:0;}
+    .footer__top{flex-direction:row;justify-content:space-between;text-align:left;}
+    .footer__bottom{flex-direction:row;justify-content:space-between;text-align:left;}
+  }
+
+  /* ---------- case studies overview ---------- */
+  .cs-hero{padding-block:clamp(28px,5vw,56px) clamp(40px,6vw,64px);}
+  .cs-hero__title{font-size:var(--fs-display);line-height:var(--lh-display);
+    font-weight:800;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 clamp(16px,2.4vw,22px);}
+  .cs-hero__body{font-size:var(--fs-body);font-weight:500;line-height:1.55;
+    max-width:62ch;margin:0;}
+
+  /* case study index: full-bleed alternating black/white rows */
+  .cs-list{list-style:none;margin:0;padding:0;}
+
+  .case-row{position:relative;overflow:hidden;
+    padding-block:clamp(48px,7vw,88px);border-bottom:1px solid rgba(0,0,0,.1);
+    text-decoration:none;color:inherit;display:block;}
+  .case-row--white{--row-bg:var(--white);background:var(--white);color:var(--black);}
+  .case-row--black{--row-bg:var(--black);background:var(--black);color:var(--white);border-bottom-color:rgba(255,255,255,.12);}
+
+  .case-row__bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+  .case-row__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    object-position:center 30%;filter:grayscale(1);opacity:.3;}
+  .case-row__bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,var(--row-bg) 0%,var(--row-bg) 38%,transparent 92%);}
+
+  .case-row__inner{position:relative;z-index:1;max-width:680px;}
+  .case-row__num{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.24em;color:var(--orange);}
+  .case-row__client{font-size:clamp(1.5rem,4.6vw,2.1rem);font-weight:800;
+    text-transform:uppercase;letter-spacing:-.015em;margin:clamp(10px,1.4vw,14px) 0 0;}
+  .case-row__summary{font-size:clamp(1rem,3.6vw,1.14rem);font-weight:500;line-height:1.55;
+    margin:clamp(14px,2vw,18px) 0 0;}
+  .case-row--white .case-row__summary{color:rgba(0,0,0,.72);}
+  .case-row--black .case-row__summary{color:rgba(255,255,255,.8);}
+  .case-row__summary .hi{color:var(--orange);font-weight:700;}
+  .case-row__link{display:inline-flex;align-items:center;gap:10px;
+    font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    margin-top:clamp(22px,3vw,30px);border-bottom:2px solid currentColor;padding-bottom:6px;}
+  .case-row__link svg{width:20px;height:8px;flex:0 0 auto;}
+  .case-row:hover .case-row__link{color:var(--orange);border-bottom-color:var(--orange);}
+
+  .case-row--placeholder .case-row__num{opacity:.4;}
+  .case-row--placeholder .case-row__client{opacity:.4;font-weight:700;}
+  .case-row--placeholder .case-row__status{display:inline-flex;align-items:center;
+    font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    opacity:.4;margin-top:clamp(22px,3vw,30px);}
+  .case-row--placeholder{cursor:default;}
+
+  .cs-cta{padding-top:clamp(48px,6vw,64px);padding-bottom:var(--pad-section);
+    display:flex;flex-direction:column;gap:clamp(18px,2.6vw,24px);align-items:flex-start;}
+  .cs-cta p{font-size:var(--fs-sub);font-weight:700;line-height:1.25;margin:0;max-width:34ch;}
+</style>
+</head>
+<body>
+
+<header class="masthead shell">
+  <a class="masthead__logo" href="/" aria-label="Schola Designs and Consultation, home">
+    <svg id="logoMast" viewBox="14.5 351 583 90" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css">
+	#logoMast .st0{fill-rule:evenodd;clip-rule:evenodd;}
+	#logoMast .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#F25C05;}
+</style>
+<g>
+	<path class="st0" d="M94.82,438.52c-1.14-1.09-2.2-2.08-3.14-3.02c0.73-1.09,1.41-2.32,1.94-3.7l-2.87-2.14
+		c-0.41,1.29-0.94,2.43-1.55,3.43c-1.44-1.41-2.61-2.64-3.55-3.7c2.46-1.26,4.87-2.76,4.87-5.6c0-2.64-2.32-4.52-5.66-4.52
+		c-3.46,0-5.69,1.94-5.69,4.84c0,1.47,0.53,2.87,1.79,4.6c-2.23,1.23-4.19,2.76-4.19,5.57c0,3.46,2.93,5.92,6.83,5.92
+		c2.17,0,4.19-0.82,5.95-2.35c0.91,0.91,1.91,1.88,2.99,2.93L94.82,438.52L94.82,438.52z M82.71,424.12c0-1.26,0.85-2.17,2.2-2.17
+		c1.23,0,2.05,0.76,2.05,1.88c0,1.53-1.35,2.49-3.05,3.4C83.09,426.03,82.71,425.03,82.71,424.12L82.71,424.12z M83.76,436.94
+		c-1.88,0-3.28-1.2-3.28-2.96c0-1.29,0.94-2.2,2.26-3.02c1.17,1.29,2.61,2.79,4.43,4.6C86.11,436.44,84.96,436.94,83.76,436.94z"/>
+	<path class="st0" d="M137.68,426.03l2.7-3.28c-2.02-2.08-5.13-3.4-8.09-3.4c-6.22,0-10.94,4.46-10.94,10.38
+		c0,5.95,4.63,10.5,10.76,10.5c2.99,0,6.13-1.44,8.3-3.67l-2.73-2.96c-1.47,1.47-3.49,2.4-5.34,2.4c-3.52,0-6.25-2.76-6.25-6.33
+		c0-3.58,2.73-6.31,6.25-6.31C134.24,423.36,136.27,424.41,137.68,426.03z"/>
+	<path class="st0" d="M169.07,419.34c-6.28,0-11.03,4.43-11.03,10.41c0,5.95,4.75,10.47,11.03,10.47c6.28,0,11.03-4.55,11.03-10.47
+		C180.09,423.8,175.34,419.34,169.07,419.34L169.07,419.34z M169.12,423.39c3.43,0,6.22,2.76,6.22,6.36c0,3.61-2.79,6.42-6.22,6.42
+		c-3.43,0-6.33-2.82-6.33-6.42C162.79,426.14,165.66,423.39,169.12,423.39z"/>
+	<polygon class="st0" points="199.87,419.49 199.87,440.02 204.3,440.02 204.3,426.85 214.24,440.02 218.46,440.02 218.46,419.49
+		214.06,419.49 214.06,432.68 204.09,419.49 	"/>
+	<path class="st0" d="M253.23,425.35l1.79-3.84c-2.05-1.35-4.93-2.23-7.8-2.23c-4.75,0-7.95,2.35-7.95,6.07
+		c0,7.27,10.94,5.01,10.94,8.89c0,1.26-1.14,1.97-3.05,1.97c-2.17,0-5.16-1.2-7.27-3.08l-1.85,3.78c2.32,1.96,5.69,3.26,9.06,3.26
+		c4.55,0,8.04-2.17,8.04-6.19c0.03-7.39-10.91-5.28-10.91-9.06c0-1.11,1.06-1.67,2.61-1.67
+		C248.47,423.24,251.06,424.06,253.23,425.35z"/>
+	<path class="st0" d="M279.37,431.42v-11.94h-4.63v11.94c0,5.43,3.64,8.8,9.33,8.8c5.66,0,9.21-3.37,9.21-8.8v-11.94h-4.63v11.94
+		c0,2.96-1.82,4.75-4.58,4.75C281.3,436.17,279.37,434.39,279.37,431.42z"/>
+	<polygon class="st0" points="314.13,419.49 314.13,440.02 327.56,440.02 327.56,435.97 318.76,435.97 318.76,419.49 	"/>
+	<polygon class="st0" points="345.02,419.49 345.02,423.42 351.27,423.42 351.27,440.02 355.9,440.02 355.9,423.42 362.18,423.42
+		362.18,419.49 	"/>
+	<path class="st0" d="M394.42,440.02h4.96l-8.77-20.53h-4.78l-8.92,20.53h4.78l1.61-3.99h9.5L394.42,440.02L394.42,440.02z
+		 M384.83,432.3l3.26-7.98l3.23,7.98H384.83z"/>
+	<polygon class="st0" points="414.08,419.49 414.08,423.42 420.32,423.42 420.32,440.02 424.96,440.02 424.96,423.42 431.23,423.42
+		431.23,419.49 	"/>
+	<rect x="450.45" y="419.49" class="st0" width="4.63" height="20.53"/>
+	<path class="st0" d="M485.92,419.34c-6.28,0-11.03,4.43-11.03,10.41c0,5.95,4.75,10.47,11.03,10.47c6.28,0,11.03-4.55,11.03-10.47
+		C496.95,423.8,492.19,419.34,485.92,419.34L485.92,419.34z M485.98,423.39c3.43,0,6.22,2.76,6.22,6.36c0,3.61-2.79,6.42-6.22,6.42
+		c-3.43,0-6.33-2.82-6.33-6.42C479.64,426.14,482.52,423.39,485.98,423.39z"/>
+	<polygon class="st0" points="516.72,419.49 516.72,440.02 521.15,440.02 521.15,426.85 531.09,440.02 535.32,440.02 535.32,419.49
+		530.92,419.49 530.92,432.68 520.94,419.49 	"/>
+	<path class="st0" d="M49.58,368.09l4.1-8.81c-4.71-3.09-11.29-5.11-17.88-5.11c-10.89,0-18.22,5.38-18.22,13.92
+		c0,16.67,25.07,11.5,25.07,20.37c0,2.89-2.62,4.5-6.99,4.5c-4.97,0-11.83-2.76-16.67-7.06l-4.24,8.67
+		c5.31,4.5,13.04,7.46,20.77,7.46c10.42,0,18.42-4.97,18.42-14.18c0.07-16.94-25.01-12.1-25.01-20.77c0-2.55,2.42-3.83,5.98-3.83
+		C38.69,363.25,44.61,365.13,49.58,368.09z"/>
+	<path class="st0" d="M94.33,369.63l6.18-7.53c-4.64-4.77-11.76-7.8-18.55-7.8c-14.25,0-25.08,10.22-25.08,23.8
+		c0,13.65,10.62,24.07,24.67,24.07c6.86,0,14.05-3.29,19.02-8.4l-6.25-6.79c-3.36,3.36-8,5.51-12.24,5.51
+		c-8.07,0-14.32-6.32-14.32-14.52c0-8.2,6.25-14.45,14.32-14.45C86.47,363.52,91.11,365.94,94.33,369.63z"/>
+	<polygon class="st0" points="105.74,354.64 105.74,401.7 116.36,401.7 116.36,383.15 137.67,383.15 137.67,401.7 148.29,401.7
+		148.29,354.64 137.67,354.64 137.67,374.27 116.36,374.27 116.36,354.64 	"/>
+	<path class="st0" d="M179.4,354.31c-14.39,0-25.28,10.15-25.28,23.86c0,13.65,10.89,24,25.28,24c14.39,0,25.28-10.42,25.28-24
+		C204.67,364.52,193.78,354.31,179.4,354.31L179.4,354.31z M179.53,363.58c7.87,0,14.25,6.32,14.25,14.59
+		c0,8.27-6.39,14.72-14.25,14.72c-7.87,0-14.52-6.45-14.52-14.72C165.01,369.9,171.6,363.58,179.53,363.58z"/>
+	<polygon class="st0" points="210.5,354.64 210.5,401.7 241.29,401.7 241.29,392.42 221.12,392.42 221.12,354.64 	"/>
+	<path class="st1" d="M325.31,354.64h-19.97v14.74c3.17-0.65,7.61-1.3,10.59-1.3l0.03-4.5h9.14c8.07,0,14.12,5.98,14.12,14.66
+		c0,8.61-5.78,14.52-13.65,14.52h-9.61v-8.79c-2.02,0.9-8.38,1.76-10.62,2.23v15.51h19.56c14.86,0,25.14-9.68,25.14-23.53
+		C350.05,364.26,339.9,354.64,325.31,354.64L325.31,354.64z M355.87,354.64v47.06h36.57v-8.81H366.5v-10.42h22.66v-8.81H366.5
+		v-10.22h25.21v-8.81H355.87L355.87,354.64z M430.61,368.09l4.1-8.81c-4.71-3.09-11.29-5.11-17.88-5.11
+		c-10.89,0-18.22,5.38-18.22,13.92c0,16.67,25.08,11.5,25.08,20.37c0,2.89-2.62,4.5-6.99,4.5c-4.97,0-11.83-2.76-16.67-7.06
+		l-4.24,8.67c5.31,4.5,13.04,7.46,20.77,7.46c10.42,0,18.42-4.97,18.42-14.18c0.07-16.94-25.01-12.1-25.01-20.77
+		c0-2.55,2.42-3.83,5.98-3.83C419.72,363.25,425.63,365.13,430.61,368.09L430.61,368.09z M441.27,354.64v47.06h10.62v-47.06H441.27
+		L441.27,354.64z M492.75,390.34c-3.02,1.55-6.39,2.55-9.21,2.55c-8.34,0-14.86-6.39-14.86-14.72c0-8.27,6.45-14.66,14.79-14.66
+		c4.57,0,9.41,2.02,12.91,5.24l5.98-7.6c-4.77-4.17-11.9-6.86-18.89-6.86c-14.66,0-25.68,10.29-25.68,23.87
+		c0,13.65,10.82,24,25.07,24c6.52,0,14.12-2.49,19.09-6.12v-18.08h-9.21V390.34L492.75,390.34z M510.07,354.64v47.06h10.15v-30.18
+		l22.79,30.18h9.68v-47.06h-10.08v30.25l-22.86-30.25H510.07L510.07,354.64z M592.87,368.09l4.1-8.81
+		c-4.71-3.09-11.29-5.11-17.88-5.11c-10.89,0-18.22,5.38-18.22,13.92c0,16.67,25.08,11.5,25.08,20.37c0,2.89-2.62,4.5-6.99,4.5
+		c-4.97,0-11.83-2.76-16.67-7.06l-4.24,8.67c5.31,4.5,13.04,7.46,20.77,7.46c10.42,0,18.42-4.97,18.42-14.18
+		c0.07-16.94-25.01-12.1-25.01-20.77c0-2.55,2.42-3.83,5.98-3.83C581.98,363.25,587.89,365.13,592.87,368.09z"/>
+	<path class="st0" d="M258.67,377.91l13.15-26.72l12.08,22.86c-5.46,0.57-10.9,1.33-16.3,2.23
+		C264.63,376.78,261.63,377.31,258.67,377.91z"/>
+	<path class="st0" d="M253.48,386.5l3.17-6.77c0,0,28.29-6.2,49.36-5.18C306.02,374.55,274.13,378.31,253.48,386.5z"/>
+	<path class="st0" d="M288.04,383.12l10.81,19.61c0,0-11.52-10.08-22.14-15.28C280.43,385.86,284.21,384.41,288.04,383.12z"/>
+	<path class="st1" d="M244.85,403.13c0,0,34.56-24.06,68.18-26.86c0,0-37.26,1.86-61.34,13.17L244.85,403.13z"/>
+</g>
+<g>
+	<path d="M321.13,374.86c-2.11,2.38-4.21,4.76-6.34,7.16c0.01-0.12,0.02-0.2,0.03-0.29c0.24-2.09,0.48-4.18,0.72-6.26
+		c0.01-0.07,0-0.15-0.03-0.21c-0.78-1.79-1.57-3.57-2.36-5.35c-0.01-0.02-0.01-0.03-0.04-0.08
+		C315.8,371.51,318.46,373.18,321.13,374.86z"/>
+</g>
+</svg>
+  </a>
+
+  <nav class="masthead__nav" aria-label="Primary">
+    <ul class="masthead__links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#brand-intervention">Brand Intervention</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/#insights">Insights</a></li>
+    </ul>
+  </nav>
+
+  <a class="btn btn--nav masthead__cta" href="/fit-assessment">See if we&rsquo;re a fit</a>
+
+  <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <div class="menu__top">
+    <button class="menu__close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav aria-label="Mobile">
+    <ul class="menu__list">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#brand-intervention">Brand Intervention</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/#insights">Insights</a></li>
+    </ul>
+  </nav>
+  <a class="btn" href="/fit-assessment">See if we&rsquo;re a fit
+    <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  </a>
+</div>
+
+<main>
+  <section class="cs-hero shell">
+    <p class="eyebrow">The work</p>
+    <h1 class="cs-hero__title">Case studies</h1>
+    <p class="cs-hero__body">A few of the businesses Schola Designs has worked with, and what changed once we dug into where the value actually was.</p>
+  </section>
+
+  <ul class="cs-list" id="csGrid"></ul>
+
+  <div class="shell">
+    <div class="cs-cta">
+      <p>If this sounds like the kind of work you want done on your business, let&rsquo;s find out if it&rsquo;s a fit.</p>
+      <a class="btn" href="/fit-assessment">See if we&rsquo;re a fit
+        <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer__top">
+      <a class="footer__logo" href="/" aria-label="Schola Designs and Consultation, home">
+        <svg id="logoFoot" viewBox="14.5 351 583 90" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css">
+	#logoFoot .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	#logoFoot .st1{fill:#FFFFFF;}
+</style>
+<g>
+	<path class="st0" d="M94.82,438.52c-1.14-1.09-2.2-2.08-3.14-3.02c0.73-1.09,1.41-2.32,1.94-3.7l-2.87-2.14
+		c-0.41,1.29-0.94,2.43-1.55,3.43c-1.44-1.41-2.61-2.64-3.55-3.7c2.46-1.26,4.87-2.76,4.87-5.6c0-2.64-2.32-4.52-5.66-4.52
+		c-3.46,0-5.69,1.94-5.69,4.84c0,1.47,0.53,2.87,1.79,4.6c-2.23,1.23-4.19,2.76-4.19,5.57c0,3.46,2.93,5.92,6.83,5.92
+		c2.17,0,4.19-0.82,5.95-2.35c0.91,0.91,1.91,1.88,2.99,2.93L94.82,438.52L94.82,438.52z M82.71,424.12c0-1.26,0.85-2.17,2.2-2.17
+		c1.23,0,2.05,0.76,2.05,1.88c0,1.53-1.35,2.49-3.05,3.4C83.09,426.03,82.71,425.03,82.71,424.12L82.71,424.12z M83.76,436.94
+		c-1.88,0-3.28-1.2-3.28-2.96c0-1.29,0.94-2.2,2.26-3.02c1.17,1.29,2.61,2.79,4.43,4.6C86.11,436.44,84.96,436.94,83.76,436.94z"/>
+	<path class="st0" d="M137.68,426.03l2.7-3.28c-2.02-2.08-5.13-3.4-8.09-3.4c-6.22,0-10.94,4.46-10.94,10.38
+		c0,5.95,4.63,10.5,10.76,10.5c2.99,0,6.13-1.44,8.3-3.67l-2.73-2.96c-1.47,1.47-3.49,2.4-5.34,2.4c-3.52,0-6.25-2.76-6.25-6.33
+		c0-3.58,2.73-6.31,6.25-6.31C134.24,423.36,136.27,424.41,137.68,426.03z"/>
+	<path class="st0" d="M169.07,419.34c-6.28,0-11.03,4.43-11.03,10.41c0,5.95,4.75,10.47,11.03,10.47c6.28,0,11.03-4.55,11.03-10.47
+		C180.09,423.8,175.34,419.34,169.07,419.34L169.07,419.34z M169.12,423.39c3.43,0,6.22,2.76,6.22,6.36c0,3.61-2.79,6.42-6.22,6.42
+		c-3.43,0-6.33-2.82-6.33-6.42C162.79,426.14,165.66,423.39,169.12,423.39z"/>
+	<polygon class="st0" points="199.87,419.49 199.87,440.02 204.3,440.02 204.3,426.85 214.24,440.02 218.46,440.02 218.46,419.49
+		214.06,419.49 214.06,432.68 204.09,419.49 	"/>
+	<path class="st0" d="M253.23,425.35l1.79-3.84c-2.05-1.35-4.93-2.23-7.8-2.23c-4.75,0-7.95,2.35-7.95,6.07
+		c0,7.27,10.94,5.01,10.94,8.89c0,1.26-1.14,1.97-3.05,1.97c-2.17,0-5.16-1.2-7.27-3.08l-1.85,3.78c2.32,1.96,5.69,3.26,9.06,3.26
+		c4.55,0,8.04-2.17,8.04-6.19c0.03-7.39-10.91-5.28-10.91-9.06c0-1.11,1.06-1.67,2.61-1.67
+		C248.47,423.24,251.06,424.06,253.23,425.35z"/>
+	<path class="st0" d="M279.37,431.42v-11.94h-4.63v11.94c0,5.43,3.64,8.8,9.33,8.8c5.66,0,9.21-3.37,9.21-8.8v-11.94h-4.63v11.94
+		c0,2.96-1.82,4.75-4.58,4.75C281.3,436.17,279.37,434.39,279.37,431.42z"/>
+	<polygon class="st0" points="314.13,419.49 314.13,440.02 327.56,440.02 327.56,435.97 318.76,435.97 318.76,419.49 	"/>
+	<polygon class="st0" points="345.02,419.49 345.02,423.42 351.27,423.42 351.27,440.02 355.9,440.02 355.9,423.42 362.18,423.42
+		362.18,419.49 	"/>
+	<path class="st0" d="M394.42,440.02h4.96l-8.77-20.53h-4.78l-8.92,20.53h4.78l1.61-3.99h9.5L394.42,440.02L394.42,440.02z
+		 M384.83,432.3l3.26-7.98l3.23,7.98H384.83z"/>
+	<polygon class="st0" points="414.08,419.49 414.08,423.42 420.32,423.42 420.32,440.02 424.96,440.02 424.96,423.42 431.23,423.42
+		431.23,419.49 	"/>
+	<rect x="450.45" y="419.49" class="st0" width="4.63" height="20.53"/>
+	<path class="st0" d="M485.92,419.34c-6.28,0-11.03,4.43-11.03,10.41c0,5.95,4.75,10.47,11.03,10.47c6.28,0,11.03-4.55,11.03-10.47
+		C496.95,423.8,492.19,419.34,485.92,419.34L485.92,419.34z M485.98,423.39c3.43,0,6.22,2.76,6.22,6.36c0,3.61-2.79,6.42-6.22,6.42
+		c-3.43,0-6.33-2.82-6.33-6.42C479.64,426.14,482.52,423.39,485.98,423.39z"/>
+	<polygon class="st0" points="516.72,419.49 516.72,440.02 521.15,440.02 521.15,426.85 531.09,440.02 535.32,440.02 535.32,419.49
+		530.92,419.49 530.92,432.68 520.94,419.49 	"/>
+	<path class="st0" d="M49.58,368.09l4.1-8.81c-4.71-3.09-11.29-5.11-17.88-5.11c-10.89,0-18.22,5.38-18.22,13.92
+		c0,16.67,25.07,11.5,25.07,20.37c0,2.89-2.62,4.5-6.99,4.5c-4.97,0-11.83-2.76-16.67-7.06l-4.24,8.67
+		c5.31,4.5,13.04,7.46,20.77,7.46c10.42,0,18.42-4.97,18.42-14.18c0.07-16.94-25.01-12.1-25.01-20.77c0-2.55,2.42-3.83,5.98-3.83
+		C38.69,363.25,44.61,365.13,49.58,368.09z"/>
+	<path class="st0" d="M94.33,369.63l6.18-7.53c-4.64-4.77-11.76-7.8-18.55-7.8c-14.25,0-25.08,10.22-25.08,23.8
+		c0,13.65,10.62,24.07,24.67,24.07c6.86,0,14.05-3.29,19.02-8.4l-6.25-6.79c-3.36,3.36-8,5.51-12.24,5.51
+		c-8.07,0-14.32-6.32-14.32-14.52c0-8.2,6.25-14.45,14.32-14.45C86.47,363.52,91.11,365.94,94.33,369.63z"/>
+	<polygon class="st0" points="105.74,354.64 105.74,401.7 116.36,401.7 116.36,383.15 137.67,383.15 137.67,401.7 148.29,401.7
+		148.29,354.64 137.67,354.64 137.67,374.27 116.36,374.27 116.36,354.64 	"/>
+	<path class="st0" d="M179.4,354.31c-14.39,0-25.28,10.15-25.28,23.86c0,13.65,10.89,24,25.28,24c14.39,0,25.28-10.42,25.28-24
+		C204.67,364.52,193.78,354.31,179.4,354.31L179.4,354.31z M179.53,363.58c7.87,0,14.25,6.32,14.25,14.59
+		c0,8.27-6.39,14.72-14.25,14.72c-7.87,0-14.52-6.45-14.52-14.72C165.01,369.9,171.6,363.58,179.53,363.58z"/>
+	<polygon class="st0" points="210.5,354.64 210.5,401.7 241.29,401.7 241.29,392.42 221.12,392.42 221.12,354.64 	"/>
+	<path class="st1" d="M325.31,354.64h-19.97v14.74c3.17-0.65,7.61-1.3,10.59-1.3l0.03-4.5h9.14c8.07,0,14.12,5.98,14.12,14.66
+		c0,8.61-5.78,14.52-13.65,14.52h-9.61v-8.79c-2.02,0.9-8.38,1.76-10.62,2.23v15.51h19.56c14.86,0,25.14-9.68,25.14-23.53
+		C350.05,364.26,339.9,354.64,325.31,354.64L325.31,354.64z M355.87,354.64v47.06h36.57v-8.81H366.5v-10.42h22.66v-8.81H366.5
+		v-10.22h25.21v-8.81H355.87L355.87,354.64z M430.61,368.09l4.1-8.81c-4.71-3.09-11.29-5.11-17.88-5.11
+		c-10.89,0-18.22,5.38-18.22,13.92c0,16.67,25.08,11.5,25.08,20.37c0,2.89-2.62,4.5-6.99,4.5c-4.97,0-11.83-2.76-16.67-7.06
+		l-4.24,8.67c5.31,4.5,13.04,7.46,20.77,7.46c10.42,0,18.42-4.97,18.42-14.18c0.07-16.94-25.01-12.1-25.01-20.77
+		c0-2.55,2.42-3.83,5.98-3.83C419.72,363.25,425.63,365.13,430.61,368.09L430.61,368.09z M441.27,354.64v47.06h10.62v-47.06H441.27
+		L441.27,354.64z M492.75,390.34c-3.02,1.55-6.39,2.55-9.21,2.55c-8.34,0-14.86-6.39-14.86-14.72c0-8.27,6.45-14.66,14.79-14.66
+		c4.57,0,9.41,2.02,12.91,5.24l5.98-7.6c-4.77-4.17-11.9-6.86-18.89-6.86c-14.66,0-25.68,10.29-25.68,23.87
+		c0,13.65,10.82,24,25.07,24c6.52,0,14.12-2.49,19.09-6.12v-18.08h-9.21V390.34L492.75,390.34z M510.07,354.64v47.06h10.15v-30.18
+		l22.79,30.18h9.68v-47.06h-10.08v30.25l-22.86-30.25H510.07L510.07,354.64z M592.87,368.09l4.1-8.81
+		c-4.71-3.09-11.29-5.11-17.88-5.11c-10.89,0-18.22,5.38-18.22,13.92c0,16.67,25.08,11.5,25.08,20.37c0,2.89-2.62,4.5-6.99,4.5
+		c-4.97,0-11.83-2.76-16.67-7.06l-4.24,8.67c5.31,4.5,13.04,7.46,20.77,7.46c10.42,0,18.42-4.97,18.42-14.18
+		c0.07-16.94-25.01-12.1-25.01-20.77c0-2.55,2.42-3.83,5.98-3.83C581.98,363.25,587.89,365.13,592.87,368.09z"/>
+	<path class="st0" d="M258.67,377.91l13.15-26.72l12.08,22.86c-5.46,0.57-10.9,1.33-16.3,2.23
+		C264.63,376.78,261.63,377.31,258.67,377.91z"/>
+	<path class="st0" d="M253.48,386.5l3.17-6.77c0,0,28.29-6.2,49.36-5.18C306.02,374.55,274.13,378.31,253.48,386.5z"/>
+	<path class="st0" d="M288.04,383.12l10.81,19.61c0,0-11.52-10.08-22.14-15.28C280.43,385.86,284.21,384.41,288.04,383.12z"/>
+	<path class="st0" d="M244.85,403.13c0,0,34.56-24.06,68.18-26.86c0,0-37.26,1.86-61.34,13.17L244.85,403.13z"/>
+</g>
+<g>
+	<path class="st1" d="M321.13,374.86c-2.11,2.38-4.21,4.76-6.34,7.16c0.01-0.12,0.02-0.2,0.03-0.29c0.24-2.09,0.48-4.18,0.72-6.26
+		c0.01-0.07,0-0.15-0.03-0.21c-0.78-1.79-1.57-3.57-2.36-5.35c-0.01-0.02-0.01-0.03-0.04-0.08
+		C315.8,371.51,318.46,373.18,321.13,374.86z"/>
+</g>
+</svg>
+      </a>
+      <nav aria-label="Footer">
+        <ul class="footer__nav">
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#brand-intervention">Brand Intervention</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/#insights">Insights</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 Schola Designs &amp; Consultation. All rights reserved.</p>
+      <p class="footer__copy">Morgan City, Louisiana</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- Render the case study grid from the shared data file ---------------
+  var arrow = '<svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+
+  function escapeHtml(str){
+    return String(str || "").replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  // Build the summary sentence with the key phrase wrapped in the orange
+  // highlight span. Everything is escaped first, then the (also escaped)
+  // highlight phrase is wrapped, so nothing typed into the CMS can inject
+  // markup. This is how a non-technical editor gets the highlight effect
+  // without ever writing HTML.
+  function buildSummaryHtml(cs){
+    var safeSummary = escapeHtml(cs.summary || "");
+    var phrase = (cs.highlightPhrase || "").trim();
+    if (!phrase) return safeSummary;
+    var safePhrase = escapeHtml(phrase);
+    var idx = safeSummary.indexOf(safePhrase);
+    if (idx === -1) return safeSummary;
+    return (
+      safeSummary.slice(0, idx) +
+      '<span class="hi">' + safePhrase + '</span>' +
+      safeSummary.slice(idx + safePhrase.length)
+    );
+  }
+
+  function renderCard(cs, index){
+    var num = String(index + 1).padStart(2, "0");
+    // Alternating rhythm: even index black, odd index white.
+    var colorClass = (index % 2 === 0) ? "case-row--black" : "case-row--white";
+    var bg = cs.photo
+      ? '<span class="case-row__bg" aria-hidden="true"><img src="' + escapeHtml(cs.photo) + '" alt=""></span>'
+      : '';
+
+    if (cs.status !== "published") {
+      return (
+        '<li class="case-row ' + colorClass + ' case-row--placeholder">' +
+          '<div class="shell"><div class="case-row__inner">' +
+            '<span class="case-row__num">Case study ' + num + '</span>' +
+            '<p class="case-row__client">' + escapeHtml(cs.client || "Case study coming soon") + '</p>' +
+            '<span class="case-row__status">In progress</span>' +
+          '</div></div>' +
+        '</li>'
+      );
+    }
+
+    return (
+      '<li>' +
+        '<a class="case-row ' + colorClass + '" href="/work/' + encodeURIComponent(cs.slug) + '">' +
+          bg +
+          '<div class="shell"><div class="case-row__inner">' +
+            '<span class="case-row__num">Case study ' + num + '</span>' +
+            '<p class="case-row__client">' + escapeHtml(cs.client) + '</p>' +
+            '<p class="case-row__summary">' + buildSummaryHtml(cs) + '</p>' +
+            '<span class="case-row__link">Read the full story ' + arrow + '</span>' +
+          '</div></div>' +
+        '</a>' +
+      '</li>'
+    );
+  }
+
+  var grid = document.getElementById("csGrid");
+  fetch("/content/case-studies.json")
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      var list = data.case_studies || [];
+      grid.innerHTML = list.map(renderCard).join("");
+    })
+    .catch(function(){
+      grid.innerHTML = '<li class="case-row case-row--white"><div class="shell"><div class="case-row__inner">' +
+        '<p class="case-row__client">Case studies could not be loaded right now.</p>' +
+        '</div></div></li>';
+    });
+
+  // ---- Mobile menu ---------------------------------------------------------
+  var menu = document.getElementById("menu");
+  var burger = document.querySelector(".burger");
+  var menuClose = document.querySelector(".menu__close");
+
+  function openMenu(){
+    menu.hidden = false;
+    burger.setAttribute("aria-expanded", "true");
+  }
+  function shutMenu(){
+    menu.hidden = true;
+    burger.setAttribute("aria-expanded", "false");
+  }
+  burger.addEventListener("click", openMenu);
+  menuClose.addEventListener("click", shutMenu);
+
+})();
+</script>
+</body>
+</html>

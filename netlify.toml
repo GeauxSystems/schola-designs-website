@@ -1,0 +1,49 @@
+# Netlify configuration for Schola Designs & Consultation.
+#
+# The site is built as plain HTML files with the .html extension, but every
+# internal link on the site points to the clean version of the URL (e.g.
+# /about, not /about.html). These redirects map the clean URL to the real
+# file. status = 200 means a "rewrite": the address bar keeps showing the
+# clean URL instead of jumping to the .html one.
+#
+# /work/* is a wildcard: any slug (e.g. /work/pelican) serves work.html,
+# which then reads the slug from the URL itself and looks it up in
+# content/case-studies.json.
+
+[[redirects]]
+  from = "/"
+  to = "/schola-hero.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/case-studies"
+  to = "/case-studies.html"
+  status = 200
+
+[[redirects]]
+  from = "/work/*"
+  to = "/work.html"
+  status = 200
+
+[[redirects]]
+  from = "/fit-assessment"
+  to = "/fit-assessment.html"
+  status = 200
+
+[[redirects]]
+  from = "/not-a-fit"
+  to = "/not-a-fit.html"
+  status = 200
+
+[[redirects]]
+  from = "/find-your-disconnect"
+  to = "/find-your-disconnect.html"
+  status = 200
+
+# NOTE: the homepage links to /brand-intervention, but no brand-intervention
+# page has been built yet. Add a redirect here once that file exists.
