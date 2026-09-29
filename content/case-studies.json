@@ -1,25 +1,41 @@
 {
   "case_studies": [
     {
-      "body": [],
-      "summary": "This write-up is still in progress.",
-      "quoteName": "",
-      "quoteText": "",
+      "body": [
+        {
+          "heading": "The situation",
+          "paragraphs": [
+            "Bayou Trace Coffee Roasters had built a loyal following over five years, but nothing about how the brand looked matched the quality of what was in the bag."
+          ]
+        }
+      ],
+      "summary": "Bayou Trace had loyal customers but no visual identity holding it together. We rebuilt their brand around one idea, small-batch and local, so every touchpoint reinforces it.",
+      "quoteName": "Jamie Fontenot",
+      "quoteText": "Our coffee never changed. The way people saw us did.",
       "slug": "case-study-01",
-      "client": "",
-      "chapter": "",
-      "highlightPhrase": "",
-      "afterNote": "",
-      "beforeNote": "",
-      "quoteRole": "",
+      "client": "Bayou Trace Coffee Roasters",
+      "chapter": "A five-year-old roasting operation with no consistent look across its bags, website, or market booth.",
+      "highlightPhrase": "small-batch and local",
+      "afterNote": "New customers now recognize Bayou Trace before they taste it.",
+      "beforeNote": "Customers recognized the coffee by taste, not by look.",
+      "quoteRole": "Owner, Bayou Trace Coffee Roasters",
       "photo": "",
       "status": "published",
-      "title": "Case study coming soon",
-      "titleHighlight": "",
-      "after": "",
-      "industry": "",
-      "stats": [],
-      "before": ""
+      "title": "From backroom roaster to a name people drive for",
+      "titleHighlight": "a name people drive for",
+      "after": "Unified packaging, brand guidelines, refreshed website and market signage",
+      "industry": "Food & Beverage",
+      "stats": [
+        {
+          "value": "3x",
+          "label": "increase in farmers market walk-up sales"
+        },
+        {
+          "value": "40%",
+          "label": "of new customers cite the packaging as why they stopped"
+        }
+      ],
+      "before": "Inconsistent packaging, a DIY logo, no brand guidelines"
     },
     {
       "body": [],
