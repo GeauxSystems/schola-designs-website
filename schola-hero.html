@@ -1323,13 +1323,25 @@
      own; once someone finishes it, we send them to /admin/ to use the
      editor. Editing the email itself to link straight to /admin/ requires
      a paid Netlify plan (custom email templates), so this is the free
-     equivalent. -->
+     equivalent.
+
+     IMPORTANT: the widget's 'login' event fires not only when someone
+     finishes the invite/reset form, but also silently on any later page
+     load where it detects an already-authenticated session (a token
+     refresh counts as a "login" to the widget). Registering the redirect
+     unconditionally meant every visit while logged in bounced straight to
+     /admin/. The redirect is now scoped to only fire when the page was
+     actually opened via an invite/recovery/confirmation link, so browsing
+     the site normally while signed in no longer redirects at all. -->
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
   if (window.netlifyIdentity) {
-    netlifyIdentity.on('login', function () {
-      window.location.href = '/admin/';
-    });
+    var isAuthLinkVisit = /(^|[#&])(invite_token|recovery_token|confirmation_token)=/.test(window.location.hash);
+    if (isAuthLinkVisit) {
+      netlifyIdentity.on('login', function () {
+        window.location.href = '/admin/';
+      });
+    }
   }
 </script>
 </body>
