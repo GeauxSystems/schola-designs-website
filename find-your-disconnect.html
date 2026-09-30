@@ -761,6 +761,15 @@
   // navigator.sendBeacon fires the request even if the browser is already
   // navigating away (e.g. once showResult() below redirects a Tier 3 visitor
   // to /fit-assessment), with a fetch() fallback for browsers that lack it.
+  //
+  // Content-Type is deliberately "text/plain", not "application/json". The
+  // body is still a JSON string and GHL's webhook parses it as JSON either
+  // way, but application/json is not a CORS-safelisted content type, which
+  // forces the browser into a preflight OPTIONS request before the real
+  // POST. Confirmed against this exact webhook: the OPTIONS preflight
+  // returned 204, but the browser then blocked the actual POST that
+  // followed it, so nothing reached GHL. text/plain is safelisted, so the
+  // browser sends the POST directly with no preflight round-trip to fail.
   var GHL_FREE_ASSESSMENT_WEBHOOK = "https://services.leadconnectorhq.com/hooks/ZeZoAmpxsGzfen1ME3JX/webhook-trigger/j5GiDtGqSDtgOw3YtnTI";
 
   function submitToGHL(payload){
@@ -769,13 +778,13 @@
     if (navigator.sendBeacon) {
       sent = navigator.sendBeacon(
         GHL_FREE_ASSESSMENT_WEBHOOK,
-        new Blob([body], {type: "application/json"})
+        new Blob([body], {type: "text/plain"})
       );
     }
     if (!sent) {
       fetch(GHL_FREE_ASSESSMENT_WEBHOOK, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "text/plain"},
         body: body,
         keepalive: true
       }).catch(function(err){
