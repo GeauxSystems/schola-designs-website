@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Case Studies | Schola Designs</title>
-<meta name="description" content="A few of the businesses Schola Designs has worked with, and what changed once we did.">
+<title>The Brand Fact-Check | Schola Designs</title>
+<meta name="description" content="A paid diagnostic that finds the gap between what your business has become and what your brand communicates, before you spend money fixing the wrong thing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -108,6 +108,53 @@
     .masthead__cta{display:inline-flex;}
   }
 
+  /* ---------- page content ---------- */
+  .page-wrap{padding-block:clamp(28px,5vw,56px) var(--pad-section);}
+  .page{max-width:760px;margin:0 auto;}
+
+  .page__title{font-size:var(--fs-display);line-height:var(--lh-display);
+    font-weight:800;text-transform:uppercase;letter-spacing:-.022em;
+    margin:0 0 clamp(24px,3.4vw,34px);}
+  .page__title .hi{color:var(--orange);}
+
+  .page__lede{font-size:var(--fs-sub);font-weight:600;line-height:1.4;
+    max-width:56ch;margin:0 0 clamp(40px,5.5vw,56px);}
+
+  .block{margin:0 0 clamp(48px,6.5vw,72px);}
+  .block__head{font-size:var(--fs-close);line-height:var(--lh-close);
+    font-weight:800;letter-spacing:-.015em;margin:0 0 clamp(20px,3vw,26px);}
+  .block p{font-size:var(--fs-body);font-weight:500;line-height:1.6;
+    max-width:60ch;margin:0 0 clamp(16px,2.4vw,20px);}
+
+  .examined{margin:clamp(28px,4vw,36px) 0 0;}
+  .examined__label{font-size:.85rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.1em;margin:0 0 14px;color:rgba(20,20,20,.6);}
+  .examined__list{list-style:none;margin:0;padding:0;display:grid;gap:10px;
+    grid-template-columns:1fr;}
+  .examined__list li{font-size:.95rem;font-weight:700;padding-left:22px;
+    position:relative;}
+  .examined__list li::before{content:"";position:absolute;left:0;top:.55em;
+    width:12px;height:2px;background:var(--orange);}
+  @media (min-width:640px){
+    .examined__list{grid-template-columns:1fr 1fr;}
+  }
+
+  .steps{list-style:none;margin:0;padding:0;counter-reset:step;
+    display:grid;gap:clamp(24px,3.4vw,32px);}
+  .steps li{counter-increment:step;position:relative;padding-left:52px;}
+  .steps li::before{content:counter(step);position:absolute;left:0;top:-2px;
+    width:38px;height:38px;border-radius:50%;border:1.5px solid var(--orange);
+    color:var(--orange);font-weight:800;font-size:1rem;
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .steps__head{font-weight:800;font-size:1.05rem;margin:0 0 6px;
+    text-transform:uppercase;letter-spacing:.01em;}
+  .steps p{font-size:var(--fs-body);font-weight:500;line-height:1.55;
+    max-width:56ch;margin:0;}
+
+  .honest{border-left:3px solid var(--orange);padding-left:clamp(18px,2.6vw,24px);}
+
+  .page__cta{margin-top:clamp(12px,2vw,20px);}
+
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     *{transition:none!important;}
@@ -146,55 +193,6 @@
     .footer__top{flex-direction:row;justify-content:space-between;text-align:left;}
     .footer__bottom{flex-direction:row;justify-content:space-between;text-align:left;}
   }
-
-  /* ---------- case studies overview ---------- */
-  .cs-hero{padding-block:clamp(28px,5vw,56px) clamp(40px,6vw,64px);}
-  .cs-hero__title{font-size:var(--fs-display);line-height:var(--lh-display);
-    font-weight:800;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 clamp(16px,2.4vw,22px);}
-  .cs-hero__body{font-size:var(--fs-body);font-weight:500;line-height:1.55;
-    max-width:62ch;margin:0;}
-
-  /* case study index: full-bleed alternating black/white rows */
-  .cs-list{list-style:none;margin:0;padding:0;}
-
-  .case-row{position:relative;overflow:hidden;
-    padding-block:clamp(48px,7vw,88px);border-bottom:1px solid rgba(0,0,0,.1);
-    text-decoration:none;color:inherit;display:block;}
-  .case-row--white{--row-bg:var(--white);background:var(--white);color:var(--black);}
-  .case-row--black{--row-bg:var(--black);background:var(--black);color:var(--white);border-bottom-color:rgba(255,255,255,.12);}
-
-  .case-row__bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
-  .case-row__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    object-position:center 30%;filter:grayscale(1);opacity:.3;}
-  .case-row__bg::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(90deg,var(--row-bg) 0%,var(--row-bg) 38%,transparent 92%);}
-
-  .case-row__inner{position:relative;z-index:1;max-width:680px;}
-  .case-row__num{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;
-    letter-spacing:.24em;color:var(--orange);}
-  .case-row__client{font-size:clamp(1.5rem,4.6vw,2.1rem);font-weight:800;
-    text-transform:uppercase;letter-spacing:-.015em;margin:clamp(10px,1.4vw,14px) 0 0;}
-  .case-row__summary{font-size:clamp(1rem,3.6vw,1.14rem);font-weight:500;line-height:1.55;
-    margin:clamp(14px,2vw,18px) 0 0;}
-  .case-row--white .case-row__summary{color:rgba(0,0,0,.72);}
-  .case-row--black .case-row__summary{color:rgba(255,255,255,.8);}
-  .case-row__summary .hi{color:var(--orange);font-weight:700;}
-  .case-row__link{display:inline-flex;align-items:center;gap:10px;
-    font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
-    margin-top:clamp(22px,3vw,30px);border-bottom:2px solid currentColor;padding-bottom:6px;}
-  .case-row__link svg{width:20px;height:8px;flex:0 0 auto;}
-  .case-row:hover .case-row__link{color:var(--orange);border-bottom-color:var(--orange);}
-
-  .case-row--placeholder .case-row__num{opacity:.4;}
-  .case-row--placeholder .case-row__client{opacity:.4;font-weight:700;}
-  .case-row--placeholder .case-row__status{display:inline-flex;align-items:center;
-    font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
-    opacity:.4;margin-top:clamp(22px,3vw,30px);}
-  .case-row--placeholder{cursor:default;}
-
-  .cs-cta{padding-top:clamp(48px,6vw,64px);padding-bottom:var(--pad-section);
-    display:flex;flex-direction:column;gap:clamp(18px,2.6vw,24px);align-items:flex-start;}
-  .cs-cta p{font-size:var(--fs-sub);font-weight:700;line-height:1.25;margin:0;max-width:34ch;}
 </style>
 </head>
 <body>
@@ -314,21 +312,70 @@
   </a>
 </div>
 
-<main>
-  <section class="cs-hero shell">
-    <p class="eyebrow">The work</p>
-    <h1 class="cs-hero__title">Case studies</h1>
-    <p class="cs-hero__body">A few of the businesses Schola Designs has worked with, and what changed once we dug into where the value actually was.</p>
-  </section>
-
-  <ul class="cs-list" id="csGrid"></ul>
-
+<main class="page-wrap">
   <div class="shell">
-    <div class="cs-cta">
-      <p>If this sounds like the kind of work you want done on your business, let&rsquo;s find out if it&rsquo;s a fit.</p>
-      <a class="btn" href="/fit-assessment">See if we&rsquo;re a fit
-        <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      </a>
+    <div class="page">
+
+      <p class="eyebrow">The diagnostic</p>
+      <h1 class="page__title">The Brand<br><span class="hi">Fact-Check.</span></h1>
+      <p class="page__lede">A paid strategic diagnostic for proven businesses in transition. Before you spend on a rebrand, a new site, or more marketing, this finds out whether that spend is actually solving the right problem.</p>
+
+      <div class="block">
+        <h2 class="block__head">What it is</h2>
+        <p>The Brand Fact-Check identifies the gap between the value you&rsquo;ve built and the value your brand actually communicates, determines what&rsquo;s causing it, and prescribes what should change before you invest in execution.</p>
+        <p>It is not a rebrand, and it doesn&rsquo;t assume you need one. It&rsquo;s an investigation. Sometimes the finding is that branding isn&rsquo;t your problem at all, and we&rsquo;ll tell you that too.</p>
+
+        <div class="examined">
+          <p class="examined__label">What gets examined</p>
+          <ul class="examined__list">
+            <li>Positioning</li>
+            <li>Offer presentation</li>
+            <li>Messaging and proof</li>
+            <li>Identity</li>
+            <li>Experience and conversion</li>
+            <li>Internal alignment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2 class="block__head">How it works</h2>
+        <ol class="steps">
+          <li>
+            <p class="steps__head">We look at the evidence</p>
+            <p>Your site, your materials, how you&rsquo;re actually showing up, and how customers describe you in their own words, not how you describe yourselves.</p>
+          </li>
+          <li>
+            <p class="steps__head">We map it against the six domains</p>
+            <p>Each one gets checked against what we find, not against a generic checklist. Some domains may turn out fine. We only flag what the evidence actually supports.</p>
+          </li>
+          <li>
+            <p class="steps__head">You get a diagnosis and a prescription</p>
+            <p>A clear, specific read on what&rsquo;s actually creating the gap, and what should change to close it, in plain language, not an agency pitch.</p>
+          </li>
+          <li>
+            <p class="steps__head">You decide what happens next</p>
+            <p>Fix it with us, hand it to someone else, or sit on it. The diagnosis stands on its own either way.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <h2 class="block__head">What you walk away with</h2>
+        <p>A written diagnosis and prescription: what&rsquo;s working, what&rsquo;s creating the disconnect, and specifically what to change and why. It's yours whether or not you ever hire Schola to implement it.</p>
+      </div>
+
+      <div class="block honest">
+        <h2 class="block__head">Where this stands right now</h2>
+        <p>The Brand Fact-Check is a newly formalized version of the diagnostic thinking behind every project in our <a href="/case-studies" class="ghost-link" style="border-bottom-width:1.5px;padding-bottom:2px;">case studies</a>. As its own named engagement, it&rsquo;s new, so there isn&rsquo;t yet a completed Fact-Check of this exact shape to point to. What you can see is the pattern it&rsquo;s built from.</p>
+      </div>
+
+      <div class="page__cta">
+        <a class="btn" href="/fit-assessment">Start Fact-Check
+          <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+      </div>
+
     </div>
   </div>
 </main>
@@ -435,100 +482,28 @@
 <script>
 (function(){
   "use strict";
+  var burger = document.querySelector('.burger');
+  var menuEl = document.getElementById('menu');
+  var menuClose = document.querySelector('.menu__close');
 
-  // ---- Render the case study grid from the shared data file ---------------
-  var arrow = '<svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
-
-  function escapeHtml(str){
-    return String(str || "").replace(/[&<>"']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
-    });
+  function openMenu() {
+    menuEl.hidden = false;
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    menuClose.focus();
   }
-
-  // Build the summary sentence with the key phrase wrapped in the orange
-  // highlight span. Everything is escaped first, then the (also escaped)
-  // highlight phrase is wrapped, so nothing typed into the CMS can inject
-  // markup. This is how a non-technical editor gets the highlight effect
-  // without ever writing HTML.
-  function buildSummaryHtml(cs){
-    var safeSummary = escapeHtml(cs.summary || "");
-    var phrase = (cs.highlightPhrase || "").trim();
-    if (!phrase) return safeSummary;
-    var safePhrase = escapeHtml(phrase);
-    var idx = safeSummary.indexOf(safePhrase);
-    if (idx === -1) return safeSummary;
-    return (
-      safeSummary.slice(0, idx) +
-      '<span class="hi">' + safePhrase + '</span>' +
-      safeSummary.slice(idx + safePhrase.length)
-    );
+  function shutMenu() {
+    menuEl.hidden = true;
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    burger.focus();
   }
-
-  function renderCard(cs, index){
-    var num = String(index + 1).padStart(2, "0");
-    // Alternating rhythm: even index black, odd index white.
-    var colorClass = (index % 2 === 0) ? "case-row--black" : "case-row--white";
-    var bg = cs.photo
-      ? '<span class="case-row__bg" aria-hidden="true"><img src="' + escapeHtml(cs.photo) + '" alt=""></span>'
-      : '';
-
-    if (cs.status !== "published") {
-      return (
-        '<li class="case-row ' + colorClass + ' case-row--placeholder">' +
-          '<div class="shell"><div class="case-row__inner">' +
-            '<span class="case-row__num">Case study ' + num + '</span>' +
-            '<p class="case-row__client">' + escapeHtml(cs.client || "Case study coming soon") + '</p>' +
-            '<span class="case-row__status">In progress</span>' +
-          '</div></div>' +
-        '</li>'
-      );
-    }
-
-    return (
-      '<li>' +
-        '<a class="case-row ' + colorClass + '" href="/work/' + encodeURIComponent(cs.slug) + '">' +
-          bg +
-          '<div class="shell"><div class="case-row__inner">' +
-            '<span class="case-row__num">Case study ' + num + '</span>' +
-            '<p class="case-row__client">' + escapeHtml(cs.client) + '</p>' +
-            '<p class="case-row__summary">' + buildSummaryHtml(cs) + '</p>' +
-            '<span class="case-row__link">Read the full story ' + arrow + '</span>' +
-          '</div></div>' +
-        '</a>' +
-      '</li>'
-    );
-  }
-
-  var grid = document.getElementById("csGrid");
-  fetch("/content/case-studies.json")
-    .then(function(res){ return res.json(); })
-    .then(function(data){
-      var list = data.case_studies || [];
-      grid.innerHTML = list.map(renderCard).join("");
-    })
-    .catch(function(){
-      grid.innerHTML = '<li class="case-row case-row--white"><div class="shell"><div class="case-row__inner">' +
-        '<p class="case-row__client">Case studies could not be loaded right now.</p>' +
-        '</div></div></li>';
-    });
-
-  // ---- Mobile menu ---------------------------------------------------------
-  var menu = document.getElementById("menu");
-  var burger = document.querySelector(".burger");
-  var menuClose = document.querySelector(".menu__close");
-
-  function openMenu(){
-    menu.hidden = false;
-    burger.setAttribute("aria-expanded", "true");
-  }
-  function shutMenu(){
-    menu.hidden = true;
-    burger.setAttribute("aria-expanded", "false");
-  }
-  burger.addEventListener("click", openMenu);
-  menuClose.addEventListener("click", shutMenu);
-
+  burger.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', shutMenu);
+  menuEl.addEventListener('click', function (e) { if (e.target.tagName === 'A') shutMenu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menuEl.hidden) shutMenu(); });
 })();
 </script>
+
 </body>
 </html>

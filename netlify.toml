@@ -45,5 +45,7 @@
   to = "/find-your-disconnect.html"
   status = 200
 
-# NOTE: the homepage links to /brand-intervention, but no brand-intervention
-# page has been built yet. Add a redirect here once that file exists.
+[[redirects]]
+  from = "/fact-check"
+  to = "/fact-check.html"
+  status = 200
