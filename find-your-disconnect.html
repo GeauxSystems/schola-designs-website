@@ -755,18 +755,33 @@
 
   // ---- GHL integration point --------------------------------------------
   // This build computes the tier entirely client-side, per the brief's own
-  // "custom page owns scoring, GHL owns the contact record" approach. It does
-  // NOT send data anywhere yet: there's no webhook URL or API credential to
-  // wire up from here. Replace the body of this function with a real fetch()
-  // call to your GHL webhook once that endpoint exists.
+  // "custom page owns scoring, GHL owns the contact record" approach. Posts
+  // to the "Free Assessment Submission" workflow's inbound webhook, which
+  // updates the contact record and applies the quiz-tier-1/2/3 tags.
+  // navigator.sendBeacon fires the request even if the browser is already
+  // navigating away (e.g. once showResult() below redirects a Tier 3 visitor
+  // to /fit-assessment), with a fetch() fallback for browsers that lack it.
+  var GHL_FREE_ASSESSMENT_WEBHOOK = "https://services.leadconnectorhq.com/hooks/ZeZoAmpxsGzfen1ME3JX/webhook-trigger/j5GiDtGqSDtgOw3YtnTI";
+
   function submitToGHL(payload){
-    // Example shape, once you have a real endpoint:
-    // fetch("https://YOUR-GHL-WEBHOOK-URL", {
-    //   method: "POST",
-    //   headers: {"Content-Type":"application/json"},
-    //   body: JSON.stringify(payload)
-    // });
-    console.log("GHL submission (not yet wired):", payload);
+    var body = JSON.stringify(payload);
+    var sent = false;
+    if (navigator.sendBeacon) {
+      sent = navigator.sendBeacon(
+        GHL_FREE_ASSESSMENT_WEBHOOK,
+        new Blob([body], {type: "application/json"})
+      );
+    }
+    if (!sent) {
+      fetch(GHL_FREE_ASSESSMENT_WEBHOOK, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: body,
+        keepalive: true
+      }).catch(function(err){
+        console.error("GHL submission failed:", err);
+      });
+    }
   }
   // -------------------------------------------------------------------------
 
