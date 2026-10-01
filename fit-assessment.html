@@ -804,7 +804,12 @@
       timeline: answers[3],
       decisionPattern: answers[4],
       outcome: outcome,
-      referral: referral
+      // Flattened to top-level keys (not nested under "referral") so each
+      // one maps directly to its own GHL custom field, matching the pattern
+      // that already worked for the free assessment's fields.
+      referralSource: referral.source,
+      referralTier: referral.tier,
+      referralDomains: referral.domains
     });
 
     showResult(outcome);
