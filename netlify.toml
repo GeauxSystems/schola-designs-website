@@ -10,6 +10,9 @@
 # which then reads the slug from the URL itself and looks it up in
 # content/case-studies.json.
 
+[build]
+  functions = "netlify/functions"
+
 [[redirects]]
   from = "/"
   to = "/schola-hero.html"

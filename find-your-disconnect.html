@@ -755,36 +755,38 @@
 
   // ---- GHL integration point --------------------------------------------
   // This build computes the tier entirely client-side, per the brief's own
-  // "custom page owns scoring, GHL owns the contact record" approach. Posts
-  // to the "Free Assessment Submission" workflow's inbound webhook, which
-  // updates the contact record and applies the quiz-tier-1/2/3 tags.
-  // navigator.sendBeacon fires the request even if the browser is already
-  // navigating away (e.g. once showResult() below redirects a Tier 3 visitor
-  // to /fit-assessment), with a fetch() fallback for browsers that lack it.
+  // "custom page owns scoring, GHL owns the contact record" approach.
   //
-  // Content-Type is deliberately "text/plain", not "application/json". The
-  // body is still a JSON string and GHL's webhook parses it as JSON either
-  // way, but application/json is not a CORS-safelisted content type, which
-  // forces the browser into a preflight OPTIONS request before the real
-  // POST. Confirmed against this exact webhook: the OPTIONS preflight
-  // returned 204, but the browser then blocked the actual POST that
-  // followed it, so nothing reached GHL. text/plain is safelisted, so the
-  // browser sends the POST directly with no preflight round-trip to fail.
-  var GHL_FREE_ASSESSMENT_WEBHOOK = "https://services.leadconnectorhq.com/hooks/ZeZoAmpxsGzfen1ME3JX/webhook-trigger/j5GiDtGqSDtgOw3YtnTI";
+  // This does NOT post to GHL's webhook directly from the browser. GHL's
+  // webhook only parses a request body as real, workflow-triggering data
+  // when the Content-Type header is literally "application/json". But GHL's
+  // own CORS setup doesn't fully support a cross-origin browser sending
+  // that header: the preflight OPTIONS request succeeds, but the real POST
+  // that follows it gets blocked. Sending as "text/plain" dodges that CORS
+  // block, but then GHL accepts the request (200 OK) without ever parsing
+  // it, so nothing reaches Contacts or Execution Logs either way.
+  //
+  // The fix is a same-origin relay: /netlify/functions/ghl-free-assessment
+  // (see netlify/functions/ghl-free-assessment.js) runs on this site's own
+  // server, so the browser's call to it has no CORS restriction at all, and
+  // that function then forwards the payload to GHL with the correct
+  // application/json header as a server-to-server request, which also has
+  // no CORS restriction, since CORS only governs what browsers allow.
+  var GHL_RELAY_ENDPOINT = "/.netlify/functions/ghl-free-assessment";
 
   function submitToGHL(payload){
     var body = JSON.stringify(payload);
     var sent = false;
     if (navigator.sendBeacon) {
       sent = navigator.sendBeacon(
-        GHL_FREE_ASSESSMENT_WEBHOOK,
-        new Blob([body], {type: "text/plain"})
+        GHL_RELAY_ENDPOINT,
+        new Blob([body], {type: "application/json"})
       );
     }
     if (!sent) {
-      fetch(GHL_FREE_ASSESSMENT_WEBHOOK, {
+      fetch(GHL_RELAY_ENDPOINT, {
         method: "POST",
-        headers: {"Content-Type": "text/plain"},
+        headers: {"Content-Type": "application/json"},
         body: body,
         keepalive: true
       }).catch(function(err){
