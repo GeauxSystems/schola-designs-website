@@ -206,10 +206,6 @@
   .result--t3 .result__flagged-text,
   .result--t3 .result__bridge{color:rgba(255,255,255,.82);}
   .result__cta{margin-top:clamp(28px,4vw,38px);}
-  .result__optin{margin-top:clamp(20px,3vw,28px);}
-  .result__confirm{font-size:.92rem;font-weight:700;color:var(--orange);
-    margin-top:16px;}
-  .result__confirm[hidden]{display:none;}
 
   /* Tier 3 = black field, same weight-carrying convention as the homepage's
      higher-stakes sections (Reality, Offer, Fit, Decision). Contained within
@@ -510,11 +506,13 @@
       <section class="result result--t2" hidden aria-live="polite">
         <p class="eyebrow result__eyebrow">Your result</p>
         <h2 class="result__verdict"><span class="mark">Worth watching<svg class="mark__rule" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M6,11.6 C60,5.8 150,4.2 294,6.2"/><path d="M20,13.9 C80,9.2 172,8.2 286,10.1"/></svg></span>. Not urgent yet.</h2>
-        <p class="result__body">A few things aren't lining up, but not enough to call it a pattern. Keep an eye on where you flagged a problem. If it grows, this is where you'd start.</p>
+        <p class="result__body">We're not seeing a break-the-glass moment. Based on your answers, here's what's worth paying attention to.</p>
         <div class="result__flagged" id="flaggedListT2"></div>
-        <div class="result__optin">
-          <button class="ghost-link" type="button" id="optinBtn">Want us to check back in a few months and see if anything's shifted?</button>
-          <p class="result__confirm" id="optinConfirm" hidden>Got it. We'll check back in.</p>
+        <p class="result__body">We don't want you to take these results lightly, or overreact to them. The symptoms don't automatically tell us the diagnosis.</p>
+        <div class="result__cta">
+          <a class="btn" id="t2Cta" href="/fit-assessment">Worth a closer look
+            <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
         </div>
       </section>
 
@@ -522,6 +520,7 @@
       <section class="result result--t3" hidden aria-live="polite">
         <p class="eyebrow result__eyebrow" style="color:var(--orange)">Your result</p>
         <h2 class="result__verdict">This looks like <span class="hi">Fact-Check territory</span>.</h2>
+        <p class="result__body">Based on your answers, this is a break-the-glass moment.</p>
         <p class="result__body">What you've built and what the market sees have drifted apart in more places than one. This is exactly the gap the Brand Fact-Check exists to find.</p>
         <div class="result__flagged" id="flaggedListT3"></div>
         <p class="result__body">Don't panic and start throwing good money at the wrong fix before you know if it's even the issue. This is what a Brand Fact-Check is built to find.</p>
@@ -953,7 +952,22 @@
     var score = computeScore();
     var domains = flaggedDomains();
     var domainDetails = flaggedDomainDetails();
-    var tier = score <= 1 ? 1 : (score <= 3 ? 2 : 3);
+
+    // Tier is decided by two separate signals, not one blended score: how
+    // many domains got the worst answer (severeCount), and how many got any
+    // concerning answer at all (flaggedCount). A single score was hiding
+    // real patterns, e.g. three severe answers summed to the same score as
+    // three mild ones.
+    var severeCount = answers.filter(function(a){ return a === 2; }).length;
+    var flaggedCount = domainDetails.length;
+    var tier;
+    if (severeCount === 0 && flaggedCount <= 1) {
+      tier = 1;
+    } else if (severeCount >= 2 || flaggedCount >= 4) {
+      tier = 3;
+    } else {
+      tier = 2;
+    }
 
     submitToGHL({
       email: email,
@@ -979,6 +993,9 @@
 
     if (tier === 2) {
       renderTier2(document.getElementById("flaggedListT2"), domainDetails);
+      var t2DomainNames = domainDetails.map(function(d){ return d.domain; });
+      var t2Params = new URLSearchParams({source:"find-your-disconnect", tier:"2", domains:t2DomainNames.join("|")});
+      document.getElementById("t2Cta").href = "/fit-assessment?" + t2Params.toString();
       document.querySelector(".result--t2 .result__verdict").focus &&
         document.querySelector(".result--t2").setAttribute("tabindex","-1");
       document.querySelector(".result--t2").focus();
@@ -994,14 +1011,6 @@
       document.querySelector(".result--t1").focus();
     }
   }
-
-  var optinBtn = document.getElementById("optinBtn");
-  var optinConfirm = document.getElementById("optinConfirm");
-  optinBtn.addEventListener("click", function(){
-    // Persisting this opt-in also requires the GHL webhook above.
-    optinBtn.hidden = true;
-    optinConfirm.hidden = false;
-  });
 
   // ---- mobile menu (identical behavior to homepage) --------------------
   var burger = document.querySelector('.burger');
