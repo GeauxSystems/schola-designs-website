@@ -9,6 +9,12 @@
 # /work/* is a wildcard: any slug (e.g. /work/pelican) serves work.html,
 # which then reads the slug from the URL itself and looks it up in
 # content/case-studies.json.
+#
+# TEMPORARY: /case-studies and /work/* are pointed at
+# case-studies-coming-soon.html while the real case studies are being
+# rebuilt. case-studies.html, work.html, and content/case-studies.json
+# are untouched. To go live again, point these two redirects back to
+# case-studies.html and work.html.
 
 [build]
   functions = "netlify/functions"
@@ -25,12 +31,12 @@
 
 [[redirects]]
   from = "/case-studies"
-  to = "/case-studies.html"
+  to = "/case-studies-coming-soon.html"
   status = 200
 
 [[redirects]]
   from = "/work/*"
-  to = "/work.html"
+  to = "/case-studies-coming-soon.html"
   status = 200
 
 [[redirects]]
