@@ -203,19 +203,20 @@
   .result__bridge{font-size:var(--fs-body);font-weight:600;font-style:italic;
     line-height:1.5;margin:0 0 clamp(18px,2.6vw,24px);max-width:56ch;}
   .result__closing{font-size:var(--fs-body);font-weight:800;margin:0 0 clamp(18px,2.6vw,24px);}
-  .result--t3 .result__flagged-text,
-  .result--t3 .result__bridge{color:rgba(255,255,255,.82);}
   .result__cta{margin-top:clamp(28px,4vw,38px);}
 
-  /* Tier 3 = black field, same weight-carrying convention as the homepage's
-     higher-stakes sections (Reality, Offer, Fit, Decision). Contained within
-     the assessment column at every width, rather than bleeding to the
-     viewport edge: this page's content stays capped for readability, so a
-     full-bleed band here would fight the page's own column instead of
-     matching the homepage's full-width sections. */
-  .result--t3{background:var(--black);color:var(--white);
-    padding:clamp(32px,6vw,56px) clamp(24px,5.5vw,48px);}
-  .result--t3 .result__body{color:rgba(255,255,255,.82);}
+  /* Black box = the homepage's higher-stakes-section convention (Reality,
+     Offer, Fit, Decision), reused as a single callout for whatever the
+     "finding" is on a given tier, rather than recoloring the whole page.
+     Every tier uses the same white page; only this box changes per tier. */
+  .result__box{background:var(--black);color:var(--white);
+    padding:clamp(28px,5.5vw,48px) clamp(24px,5vw,40px);
+    margin:clamp(24px,3.4vw,32px) 0;}
+  .result__box .result__verdict{margin:0;}
+  .result__box .result__flagged{margin:0;}
+  .result__box .result__flagged-text,
+  .result__box .result__bridge{color:rgba(255,255,255,.82);}
+  .result__box .result__closing{color:var(--white);}
 
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
@@ -498,7 +499,9 @@
       <!-- Result: Tier 1 -->
       <section class="result result--t1" hidden aria-live="polite">
         <p class="eyebrow result__eyebrow">Your result</p>
-        <h2 class="result__verdict">This doesn&rsquo;t look like a brand problem.</h2>
+        <div class="result__box">
+          <h2 class="result__verdict">This doesn&rsquo;t look like a <span class="hi">brand problem</span>.</h2>
+        </div>
         <p class="result__body">What you've built and what people see are mostly lining up. If something still feels off, we'd guess it isn't your brand. That's not our department, but it's worth ruling out first.</p>
       </section>
 
@@ -507,7 +510,9 @@
         <p class="eyebrow result__eyebrow">Your result</p>
         <h2 class="result__verdict"><span class="mark">Worth watching<svg class="mark__rule" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M6,11.6 C60,5.8 150,4.2 294,6.2"/><path d="M20,13.9 C80,9.2 172,8.2 286,10.1"/></svg></span>. Not urgent yet.</h2>
         <p class="result__body">We're not seeing a break-the-glass moment. Based on your answers, here's what's worth paying attention to.</p>
-        <div class="result__flagged" id="flaggedListT2"></div>
+        <div class="result__box">
+          <div class="result__flagged" id="flaggedListT2"></div>
+        </div>
         <p class="result__body">We don't want you to take these results lightly, or overreact to them. The symptoms don't automatically tell us the diagnosis.</p>
         <div class="result__cta">
           <a class="btn" id="t2Cta" href="/fit-assessment">Worth a closer look
@@ -518,11 +523,13 @@
 
       <!-- Result: Tier 3 -->
       <section class="result result--t3" hidden aria-live="polite">
-        <p class="eyebrow result__eyebrow" style="color:var(--orange)">Your result</p>
+        <p class="eyebrow result__eyebrow">Your result</p>
         <h2 class="result__verdict">This looks like <span class="hi">Fact-Check territory</span>.</h2>
         <p class="result__body">Based on your answers, this is a break-the-glass moment.</p>
         <p class="result__body">What you've built and what the market sees have drifted apart in more places than one. This is exactly the gap the Brand Fact-Check exists to find.</p>
-        <div class="result__flagged" id="flaggedListT3"></div>
+        <div class="result__box">
+          <div class="result__flagged" id="flaggedListT3"></div>
+        </div>
         <p class="result__body">Don't panic and start throwing good money at the wrong fix before you know if it's even the issue. This is what a Brand Fact-Check is built to find.</p>
         <div class="result__cta">
           <a class="btn" id="t3Cta" href="/fit-assessment">See if we&rsquo;re a fit
