@@ -194,12 +194,17 @@
   .result__verdict .hi{color:var(--orange);}
   .result__body{font-size:var(--fs-body);font-weight:500;line-height:1.55;
     max-width:56ch;margin:0 0 clamp(16px,2.4vw,22px);}
-  .result__flagged{margin:clamp(24px,3.4vw,32px) 0;padding:0;list-style:none;
-    display:grid;gap:10px;}
-  .result__flagged li{font-size:.92rem;font-weight:700;text-transform:uppercase;
-    letter-spacing:.08em;padding-left:20px;position:relative;}
-  .result__flagged li::before{content:"";position:absolute;left:0;top:.5em;
-    width:10px;height:2px;background:var(--orange);}
+  .result__flagged{margin:clamp(24px,3.4vw,32px) 0;}
+  .result__flagged-item{margin-bottom:clamp(18px,2.6vw,24px);}
+  .result__flagged-domain{font-size:.78rem;font-weight:800;text-transform:uppercase;
+    letter-spacing:.1em;color:var(--orange);margin:0 0 6px;}
+  .result__flagged-text{font-size:var(--fs-body);font-weight:500;line-height:1.5;
+    margin:0;max-width:56ch;}
+  .result__bridge{font-size:var(--fs-body);font-weight:600;font-style:italic;
+    line-height:1.5;margin:0 0 clamp(18px,2.6vw,24px);max-width:56ch;}
+  .result__closing{font-size:var(--fs-body);font-weight:800;margin:0 0 clamp(18px,2.6vw,24px);}
+  .result--t3 .result__flagged-text,
+  .result--t3 .result__bridge{color:rgba(255,255,255,.82);}
   .result__cta{margin-top:clamp(28px,4vw,38px);}
   .result__optin{margin-top:clamp(20px,3vw,28px);}
   .result__confirm{font-size:.92rem;font-weight:700;color:var(--orange);
@@ -506,7 +511,7 @@
         <p class="eyebrow result__eyebrow">Your result</p>
         <h2 class="result__verdict"><span class="mark">Worth watching<svg class="mark__rule" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M6,11.6 C60,5.8 150,4.2 294,6.2"/><path d="M20,13.9 C80,9.2 172,8.2 286,10.1"/></svg></span>. Not urgent yet.</h2>
         <p class="result__body">A few things aren't lining up, but not enough to call it a pattern. Keep an eye on where you flagged a problem. If it grows, this is where you'd start.</p>
-        <ul class="result__flagged" id="flaggedListT2"></ul>
+        <div class="result__flagged" id="flaggedListT2"></div>
         <div class="result__optin">
           <button class="ghost-link" type="button" id="optinBtn">Want us to check back in a few months and see if anything's shifted?</button>
           <p class="result__confirm" id="optinConfirm" hidden>Got it. We'll check back in.</p>
@@ -518,8 +523,8 @@
         <p class="eyebrow result__eyebrow" style="color:var(--orange)">Your result</p>
         <h2 class="result__verdict">This looks like <span class="hi">Fact-Check territory</span>.</h2>
         <p class="result__body">What you've built and what the market sees have drifted apart in more places than one. This is exactly the gap the Brand Fact-Check exists to find.</p>
-        <p class="result__body">And landing here doesn't mean you have to hire us to fix it. It means the diagnostic is worth having, from us or otherwise.</p>
-        <ul class="result__flagged" id="flaggedListT3"></ul>
+        <div class="result__flagged" id="flaggedListT3"></div>
+        <p class="result__body">Don't panic and start throwing good money at the wrong fix before you know if it's even the issue. This is what a Brand Fact-Check is built to find.</p>
         <div class="result__cta">
           <a class="btn" id="t3Cta" href="/fit-assessment">See if we&rsquo;re a fit
             <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -643,6 +648,74 @@
     "Internal alignment"
   ];
 
+  // Interpretive copy per domain, keyed by answer severity (1 = partial,
+  // 2 = severe). Rules-based and hand-written, not generated: each line is
+  // keyed to the specific answer a visitor gave, not just whether a domain
+  // was flagged.
+  var DOMAIN_COPY = {
+    "Experience and conversion": {
+      1: "Your online presence is a step behind, representing the business you ran a year ago rather than the one you're running now.",
+      2: "You said it yourself: what people find doesn't match what you actually do. That gap costs you before a conversation even starts. Every visitor who underestimates you is one you have to win over twice."
+    },
+    "Messaging and proof": {
+      1: "They'd get the basics. The parts that make you different from everyone doing something similar aren't landing in that first look.",
+      2: "A stranger spending sixty seconds on you walks away assuming that's the whole business, because nothing told them otherwise."
+    },
+    "Positioning": {
+      1: "You're getting a mix. Some of it is exactly who you want, some of it isn't, and there's no clear reason either way.",
+      2: "The customers you're attracting aren't the ones you actually want more of. From the outside, the business looks built for someone else."
+    },
+    "Offer presentation": {
+      1: "It happens sometimes. You can usually guess why, but not clearly enough to do anything about it.",
+      2: "A competitor who isn't better than you keeps getting picked anyway, and you can't say why. That's money walking past you for reasons you haven't identified."
+    },
+    "Identity": {
+      1: "The brand's a little behind where the business actually is. Not a total mismatch, just enough of a lag to notice.",
+      2: "The business has changed and the brand hasn't kept up. People are meeting the version of you from a year or two ago."
+    },
+    "Internal alignment": {
+      1: "Some of the spend works, some doesn't, and there's no clear pattern to which is which.",
+      2: "Money's going out and you can't tell if it's working. Usually that means the spend doesn't know who it's supposed to be reaching."
+    }
+  };
+
+  // Causal order for the Tier 3 synthesis: identity drift feeds positioning
+  // drift, which shows up in experience/messaging, which explains lost
+  // offers, which shows up last as unaccountable marketing spend.
+  var CAUSAL_ORDER = [
+    "Identity",
+    "Positioning",
+    "Experience and conversion",
+    "Messaging and proof",
+    "Offer presentation",
+    "Internal alignment"
+  ];
+
+  // Bridge sentences inserted between two flagged domains that are adjacent
+  // in CAUSAL_ORDER. Built as a lookup table (not generated per-combination)
+  // because six domains produce too many combinations to hand-write a
+  // bespoke paragraph for each one.
+  var BRIDGES = {
+    "Identity|Positioning": "A brand that's lagging behind the business keeps pulling in the kind of customer who wanted its earlier version.",
+    "Positioning|Experience and conversion": "Attracting the wrong customers and undershooting your own capability online are usually the same gap, visible from two angles.",
+    "Positioning|Messaging and proof": "Attracting the wrong customers and undershooting your own capability online are usually the same gap, visible from two angles.",
+    "Positioning|Offer presentation": "When customers can't fully see what you do, losing a deal to a weaker competitor stops being rare.",
+    "Messaging and proof|Offer presentation": "When customers can't fully see what you do, losing a deal to a weaker competitor stops being rare.",
+    "Experience and conversion|Offer presentation": "When customers can't fully see what you do, losing a deal to a weaker competitor stops being rare.",
+    "Identity|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
+    "Positioning|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
+    "Experience and conversion|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
+    "Messaging and proof|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
+    "Offer presentation|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet."
+  };
+
+  function closingLine(count){
+    if (count === 2) return "Two symptoms. Worth tracing to one source.";
+    if (count === 3) return "Three symptoms. Worth tracing to one source.";
+    if (count >= 4) return "That's a lot of ground to be drifting on at once.";
+    return "";
+  }
+
   var TOTAL = 6;
   var answers = new Array(TOTAL).fill(null); // 0, 1, or 2 per question
   var current = 0;
@@ -736,21 +809,86 @@
     }
   });
 
+  // A partial ("somewhat") answer used to be worth nothing at all. Now it
+  // counts as half a severe answer, so a business with several moderate
+  // issues doesn't score identically to one with none.
   function computeScore(){
-    return answers.reduce(function(sum, a){ return sum + (a === 2 ? 1 : 0); }, 0);
+    var sum = answers.reduce(function(total, a){
+      if (a === 2) return total + 1;
+      if (a === 1) return total + 0.5;
+      return total;
+    }, 0);
+    return Math.round(sum * 10) / 10;
   }
 
+  // Domain names only, any signal (partial or severe). Used for the GHL
+  // payload and the handoff to /fit-assessment, where a flat list is what's
+  // mapped to the custom field.
   function flaggedDomains(){
-    return DOMAINS.filter(function(_, i){ return answers[i] === 2; });
+    return DOMAINS.filter(function(_, i){ return answers[i] >= 1; });
   }
 
-  function renderFlagged(ul, domains){
-    ul.innerHTML = "";
-    domains.forEach(function(d){
-      var li = document.createElement("li");
-      li.textContent = d;
-      ul.appendChild(li);
+  // Domain plus severity, in question order. Used for rendering, where the
+  // severity decides which line of DOMAIN_COPY to show.
+  function flaggedDomainDetails(){
+    return DOMAINS.reduce(function(acc, d, i){
+      if (answers[i] >= 1) { acc.push({ domain: d, severity: answers[i] }); }
+      return acc;
+    }, []);
+  }
+
+  function renderDomainBlock(container, domain, severity){
+    var item = document.createElement("div");
+    item.className = "result__flagged-item";
+    var label = document.createElement("p");
+    label.className = "result__flagged-domain";
+    label.textContent = domain;
+    var text = document.createElement("p");
+    text.className = "result__flagged-text";
+    text.textContent = DOMAIN_COPY[domain][severity];
+    item.appendChild(label);
+    item.appendChild(text);
+    container.appendChild(item);
+  }
+
+  // Tier 2: each flagged domain gets its own interpretation, in question
+  // order. No synthesis, matching the existing "not enough to call it a
+  // pattern" framing for this tier.
+  function renderTier2(container, details){
+    container.innerHTML = "";
+    details.forEach(function(d){
+      renderDomainBlock(container, d.domain, d.severity);
     });
+  }
+
+  // Tier 3: the same per-domain blocks, reordered into the causal chain,
+  // with a bridge sentence between any two adjacent flagged domains that
+  // have one, and a closing line sized to how many domains are involved.
+  function renderTier3(container, details){
+    container.innerHTML = "";
+    var severityByDomain = {};
+    details.forEach(function(d){ severityByDomain[d.domain] = d.severity; });
+    var ordered = CAUSAL_ORDER.filter(function(d){ return severityByDomain.hasOwnProperty(d); });
+
+    ordered.forEach(function(domain, i){
+      renderDomainBlock(container, domain, severityByDomain[domain]);
+      if (i < ordered.length - 1) {
+        var bridgeText = BRIDGES[domain + "|" + ordered[i + 1]];
+        if (bridgeText) {
+          var bridge = document.createElement("p");
+          bridge.className = "result__bridge";
+          bridge.textContent = bridgeText;
+          container.appendChild(bridge);
+        }
+      }
+    });
+
+    if (ordered.length >= 2) {
+      var closing = document.createElement("p");
+      closing.className = "result__closing";
+      closing.textContent = closingLine(ordered.length);
+      container.appendChild(closing);
+    }
   }
 
   // ---- GHL integration point --------------------------------------------
@@ -814,6 +952,7 @@
 
     var score = computeScore();
     var domains = flaggedDomains();
+    var domainDetails = flaggedDomainDetails();
     var tier = score <= 1 ? 1 : (score <= 3 ? 2 : 3);
 
     submitToGHL({
@@ -824,10 +963,10 @@
       flaggedDomains: domains
     });
 
-    showResult(tier, domains);
+    showResult(tier, domainDetails);
   });
 
-  function showResult(tier, domains){
+  function showResult(tier, domainDetails){
     qSections.forEach(function(sec){ sec.hidden = true; });
     gate.hidden = true;
     intro.hidden = true;
@@ -839,13 +978,14 @@
     resultT3.hidden = (tier !== 3);
 
     if (tier === 2) {
-      renderFlagged(document.getElementById("flaggedListT2"), domains);
+      renderTier2(document.getElementById("flaggedListT2"), domainDetails);
       document.querySelector(".result--t2 .result__verdict").focus &&
         document.querySelector(".result--t2").setAttribute("tabindex","-1");
       document.querySelector(".result--t2").focus();
     } else if (tier === 3) {
-      renderFlagged(document.getElementById("flaggedListT3"), domains);
-      var params = new URLSearchParams({source:"find-your-disconnect", tier:"3", domains:domains.join("|")});
+      renderTier3(document.getElementById("flaggedListT3"), domainDetails);
+      var domainNames = domainDetails.map(function(d){ return d.domain; });
+      var params = new URLSearchParams({source:"find-your-disconnect", tier:"3", domains:domainNames.join("|")});
       document.getElementById("t3Cta").href = "/fit-assessment?" + params.toString();
       document.querySelector(".result--t3").setAttribute("tabindex","-1");
       document.querySelector(".result--t3").focus();
