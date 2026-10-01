@@ -768,12 +768,38 @@
   }
 
   // ---- GHL integration point --------------------------------------------
-  // Same pattern as the free assessment: this page computes everything
-  // client-side and does NOT send data anywhere yet. There's no webhook URL
-  // or API credential wired up. Replace the body of this function with a
-  // real fetch() call to your GHL webhook once that endpoint exists.
+  // Posts through a same-origin relay rather than straight to GHL's
+  // webhook. GHL only parses a request body as real, workflow-triggering
+  // data when Content-Type is literally "application/json", but a
+  // cross-origin browser sending that header gets blocked by GHL's own
+  // CORS gap (confirmed on the free assessment's webhook: the preflight
+  // succeeds, the real POST that follows it does not). Routing through
+  // /.netlify/functions/ghl-fit-assessment (see
+  // netlify/functions/ghl-fit-assessment.js) avoids this: the browser's
+  // call to that same-origin endpoint has no CORS restriction, and that
+  // function's own call to GHL is server-to-server, which also has no CORS
+  // restriction, since CORS only governs what browsers allow.
+  var GHL_RELAY_ENDPOINT = "/.netlify/functions/ghl-fit-assessment";
+
   function submitToGHL(payload){
-    console.log("GHL submission (not yet wired):", payload);
+    var body = JSON.stringify(payload);
+    var sent = false;
+    if (navigator.sendBeacon) {
+      sent = navigator.sendBeacon(
+        GHL_RELAY_ENDPOINT,
+        new Blob([body], {type: "application/json"})
+      );
+    }
+    if (!sent) {
+      fetch(GHL_RELAY_ENDPOINT, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: body,
+        keepalive: true
+      }).catch(function(err){
+        console.error("GHL submission failed:", err);
+      });
+    }
   }
   // -------------------------------------------------------------------------
 
