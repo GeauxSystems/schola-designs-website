@@ -186,6 +186,16 @@
   .gate__error{color:var(--orange);font-size:.85rem;font-weight:700;margin:-14px 0 20px;}
   .gate__error[hidden]{display:none;}
 
+  /* ---------- consent checkbox (only required when a phone is given) ---------- */
+  .gate__consent{display:flex;align-items:flex-start;gap:12px;
+    margin-bottom:clamp(20px,3vw,26px);}
+  .gate__consent-input{flex:0 0 auto;width:20px;height:20px;margin-top:2px;
+    accent-color:var(--orange);cursor:pointer;}
+  .gate__consent-text{font-size:.82rem;font-weight:500;line-height:1.5;
+    color:rgba(0,0,0,.72);}
+  .gate__consent-text a{color:var(--black);text-decoration:underline;}
+  .gate__consent-text a:hover{color:var(--orange);}
+
   /* ---------- results ---------- */
   .result[hidden]{display:none;}
   .result__eyebrow{margin-bottom:clamp(18px,2.4vw,26px);}
@@ -457,6 +467,11 @@
             <label class="gate__label" for="gatePhone">Phone <span>(optional)</span></label>
             <input class="gate__input" type="tel" id="gatePhone" name="phone" autocomplete="tel">
           </div>
+          <div class="gate__consent">
+            <input class="gate__consent-input" type="checkbox" id="gateConsent" name="consent">
+            <label class="gate__consent-text" for="gateConsent">By checking this box, you agree to receive calls and texts from Schola Designs &amp; Consultation at the number you provided, including messages about your results and our services. Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time. Consent isn&rsquo;t a condition of working with us. See our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</label>
+          </div>
+          <p class="gate__error" id="gateConsentError" hidden>Check the box above so we know it&rsquo;s okay to call or text that number.</p>
           <button class="btn" type="submit">Continue
             <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
           </button>
@@ -805,11 +820,13 @@
 
   var gateForm = document.getElementById("gateForm");
   var gateError = document.getElementById("gateError");
+  var gateConsentError = document.getElementById("gateConsentError");
 
   gateForm.addEventListener("submit", function(e){
     e.preventDefault();
     var email = document.getElementById("gateEmail").value.trim();
     var phone = document.getElementById("gatePhone").value.trim();
+    var consent = document.getElementById("gateConsent").checked;
     var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     if (!validEmail) {
@@ -819,11 +836,21 @@
     }
     gateError.hidden = true;
 
+    // Consent only matters when there's a number to call or text. No phone,
+    // nothing to consent to.
+    if (phone && !consent) {
+      gateConsentError.hidden = false;
+      document.getElementById("gateConsent").focus();
+      return;
+    }
+    gateConsentError.hidden = true;
+
     var outcome = determineOutcome();
 
     submitToGHL({
       email: email,
       phone: phone || null,
+      phoneConsent: phone ? consent : null,
       tenure: answers[0],
       teamSize: answers[1],
       trigger: answers[2],
