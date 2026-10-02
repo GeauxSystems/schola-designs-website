@@ -116,25 +116,81 @@
       "before": "A home-based business making several good products, with no clear focus"
     },
     {
-      "body": [],
-      "summary": "This write-up is still in progress.",
+      "body": [
+        {
+          "heading": "The moment that made it possible",
+          "paragraphs": [
+            "When you work for someone else, the caseload is mostly decided for you.",
+            "Independence changes the question. It stops being what work comes in and becomes what work you build for. Lena wasn't just opening a practice. She was deciding what kind of practice she wanted to own.",
+            "That's a real decision, and it's easy to leave unmade. Nothing forces you to answer it. Work arrives, you take it, and a year later the practice has quietly been defined by whoever happened to call."
+          ]
+        },
+        {
+          "heading": "What was arriving, and what she was building",
+          "paragraphs": [
+            "Much of the work coming to Lena involved children. She was building an adult-focused practice.",
+            "That's not a volume problem. Nothing about it gets solved by reaching more people.",
+            "Our read was that marketing built to speak to everyone would have produced more of the same mix, faster. A practice that hadn't clearly stated who it was for was going to keep being told who it was for by its inbox.",
+            "This cuts both ways. A parent looking for a children's counselor isn't well served by finding a practice built for adults. Fit isn't a filter that only benefits the business; a mismatched inquiry costs both people the same thing, which is time.",
+            "That was our own read of the situation, based on conversations with Lena, not formal customer research or inquiry data."
+          ]
+        },
+        {
+          "heading": "Two things had to say the same thing",
+          "paragraphs": [
+            "The brand had to look like the practice she was building. Not more polished for its own sake. Aligned. There's a version of a counseling brand that reads as tentative, and a version that reads as an established, deliberate practice with a point of view about who it serves. Lena was building the second one. Our assessment was that the presentation hadn't caught up to it yet.",
+            "The way people became clients had to hold up the same promise. This is the part most brand projects skip. A brand can promise seriousness in about two seconds. The intake process is where that promise gets tested. Our assessment was that the existing path into the practice carried unnecessary friction, and that some prospective clients could reasonably be lost inside it."
+          ]
+        },
+        {
+          "heading": "The website as a filter, not a brochure",
+          "paragraphs": [
+            "The site and the intake questions were structured to do two jobs at once.",
+            "The first is the job every website claims: help the right person understand this practice is for them.",
+            "The second is the one almost nobody designs for on purpose: help the wrong fit find that out immediately, before a phone call, before a form, before anyone's time is spent. The intake was deliberately shaped in part to reduce inquiries for child counseling and route attention toward the adult practice Lena was building.",
+            "A website that tries to be for everyone doesn't eliminate the sorting. It just moves the sorting onto the owner, one conversation at a time.",
+            "For a solo practitioner, that matters more than it does anywhere else. The constraint isn't leads. It's hours, and hours don't scale. Every mismatched inquiry is paid for out of the only resource in the business that can't be increased.",
+            "The strategy sessions gave Lena a clear enough read on her own audience to speak directly to the adults she wanted to serve, instead of trying to speak to everyone. That's what the sessions were built to do, and it's what they did."
+          ]
+        },
+        {
+          "heading": "The results",
+          "paragraphs": [
+            "We're not putting a broad set of numbers on this page, because we don't have them. No baseline was captured before the work, inquiry composition wasn't tracked, and there's no conversion or revenue data to point to.",
+            "What we do have: the bootcamps themselves filled through personal advertising, referrals, and direct invitation, not the website. Lena was candid about this. She didn't see new client inquiries come through the site, and traced that to a visibility problem, getting the site in front of the right people, rather than a flaw in the site itself."
+          ]
+        },
+        {
+          "heading": "The point",
+          "paragraphs": [
+            "Almost all growth advice assumes the goal is more: more traffic, more inquiries, more leads.",
+            "For a practice built around one person's time, more of the wrong thing isn't neutral. It fills the calendar with the practice she was trying to leave behind.",
+            "A brand does two jobs. It tells the right people they're in the right place. It tells everyone else, early and without insult, that they're not. The second job is the one that gets skipped, and it's usually the one that decides what the business becomes.",
+            "Lena didn't need a bigger audience. She needed the business she was building and the business her brand described to be the same business."
+          ]
+        }
+      ],
+      "summary": "Lena Turner was building an adult-focused counseling practice, but her inbox kept deciding who she served. We built the brand and intake to narrow that on purpose, before a single inquiry came in.",
       "quoteName": "",
       "quoteText": "",
-      "slug": "case-study-03",
-      "client": "",
-      "chapter": "",
-      "highlightPhrase": "",
-      "afterNote": "",
-      "beforeNote": "",
+      "slug": "the-well-mind",
+      "client": "The Well Mind",
+      "chapter": "A new counseling practice taking in whatever inquiries came in, including many for children, while Lena tried to build something narrower.",
+      "highlightPhrase": "narrow that on purpose",
+      "afterNote": "The brand and intake now reflect the adult-focused practice Lena set out to build.",
+      "beforeNote": "A practice that hadn't clearly stated who it was for was going to keep being told who it was for by its inbox.",
       "quoteRole": "",
       "photo": "",
-      "status": "placeholder",
-      "title": "Case study coming soon",
-      "titleHighlight": "",
-      "after": "",
-      "industry": "",
+      "photoAlt": "",
+      "secondaryPhoto": "",
+      "secondaryPhotoAlt": "",
+      "status": "published",
+      "title": "The Website Was Built to Turn Some People Away",
+      "titleHighlight": "Turn Some People Away",
+      "after": "A brand, website, and intake process built to filter for the adult-focused practice Lena wanted",
+      "industry": "Mental Health & Counseling",
       "stats": [],
-      "before": ""
+      "before": "A new practice shaped by whoever happened to call, with no stated focus of its own"
     },
     {
       "body": [],
