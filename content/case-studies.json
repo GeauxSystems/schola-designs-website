@@ -193,25 +193,61 @@
       "before": "A new practice shaped by whoever happened to call, with no stated focus of its own"
     },
     {
-      "body": [],
-      "summary": "This write-up is still in progress.",
+      "body": [
+        {
+          "heading": "What it looked like",
+          "paragraphs": [
+            "G Rentals was getting customers and staying busy. The owner was stretched thin, taking on a wide range of rental jobs just to keep things moving.",
+            "At first, the problem looked operational: too many calls, manual processes, and no good way to manage bookings.",
+            "Once we got into the business, we found something more important."
+          ]
+        },
+        {
+          "heading": "What we found",
+          "paragraphs": [
+            "The real constraint was allocation. Too much of the company's time, inventory, and attention was going toward smaller, price-sensitive party rentals, when company and corporate rentals offered a stronger opportunity for the business.",
+            "Through strategy sessions, customer analysis, messaging work, and a review of how the business was operating, we helped G Rentals get clearer on which customers were actually worth pursuing.",
+            "The shift was about becoming more selective about who G Rentals served, more confident in its pricing, and more deliberate about where its limited resources went."
+          ]
+        },
+        {
+          "heading": "What changed",
+          "paragraphs": [
+            "The owner began focusing more intentionally on company and corporate rentals, rather than feeling like she had to accept every job that came in.",
+            "She told us that focusing on company work improved her margins “like crazy.”",
+            "She also said she'd become less willing to take on just anything that came along, and more confident standing behind her pricing."
+          ]
+        },
+        {
+          "heading": "The takeaway",
+          "paragraphs": [
+            "Sometimes the thing a business asks us to fix isn't the thing holding it back.",
+            "G Rentals initially looked like an operations and website problem. The deeper issue was strategic. The business needed clarity about where its value was being created and where its limited resources should go.",
+            "Once that became clear, the owner could make different decisions about customers, pricing, and growth."
+          ]
+        }
+      ],
+      "summary": "G Rentals was already busy, but spread across jobs that didn't make the most of the business. We helped the owner get clear on which customers were actually worth pursuing.",
       "quoteName": "",
       "quoteText": "",
-      "slug": "case-study-04",
-      "client": "",
-      "chapter": "",
-      "highlightPhrase": "",
-      "afterNote": "",
-      "beforeNote": "",
+      "slug": "g-rentals",
+      "client": "G Rentals",
+      "chapter": "A rental business staying busy with a wide mix of jobs, many of them small and price-sensitive, while stronger corporate opportunities went underused.",
+      "highlightPhrase": "worth pursuing",
+      "afterNote": "The owner said focusing on company rentals improved her margins “like crazy,” and that she'd become less willing to take on just anything that came along.",
+      "beforeNote": "The problem looked operational at first: too many calls, manual processes, and no good way to manage bookings.",
       "quoteRole": "",
       "photo": "",
-      "status": "placeholder",
-      "title": "Case study coming soon",
-      "titleHighlight": "",
-      "after": "",
-      "industry": "",
+      "photoAlt": "",
+      "secondaryPhoto": "",
+      "secondaryPhotoAlt": "",
+      "status": "published",
+      "title": "G Rentals Was Full. Just Not With the Right Jobs.",
+      "titleHighlight": "the Right Jobs",
+      "after": "A clearer read on which customers were worth pursuing, more selective intake, and more confidence in pricing",
+      "industry": "Rental Services",
       "stats": [],
-      "before": ""
+      "before": "Busy with a wide mix of rental jobs, many of them small and price-sensitive"
     },
     {
       "body": [],
