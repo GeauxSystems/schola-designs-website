@@ -38,25 +38,98 @@
       "before": "Inconsistent packaging, a DIY logo, no brand guidelines"
     },
     {
-      "body": [],
-      "summary": "This write-up is still in progress.",
-      "quoteName": "",
-      "quoteText": "",
-      "slug": "case-study-02",
-      "client": "",
-      "chapter": "",
-      "highlightPhrase": "",
-      "afterNote": "",
-      "beforeNote": "",
-      "quoteRole": "",
-      "photo": "",
-      "status": "placeholder",
-      "title": "Case study coming soon",
-      "titleHighlight": "",
-      "after": "",
-      "industry": "",
+      "body": [
+        {
+          "heading": "The request",
+          "paragraphs": [
+            "Toya asked for a website.",
+            "That's a normal request, and usually an easy yes. A website is a clean deliverable, it's easy to price, and the client already believes she needs it. Nobody has to be convinced of anything.",
+            "We asked to understand the business first."
+          ]
+        },
+        {
+          "heading": "What we found",
+          "paragraphs": [
+            "Pelican was doing a lot of things, and doing them well. Multiple sweets, multiple product lines, real quality behind all of it.",
+            "That was the problem.",
+            "In Courtney's words: “They did everything great and nothing special.”",
+            "Nothing in the way the business was positioned answered a simple question: what should Pelican be known for? The quality was real. The business hadn't given that quality a clear position to occupy in the market.",
+            "A website doesn't fix that. A website makes a business easier to find. It doesn't decide what the business is for. Building a beautiful site for an unfocused business produces a beautiful site for an unfocused business.",
+            "That was our own strategic read of the business, based on conversations with Toya and a review of her product line, not formal customer research."
+          ]
+        },
+        {
+          "heading": "The constraint that shaped the work",
+          "paragraphs": [
+            "Toya had limited resources. She couldn't fund a full branding program and a website, and pretending otherwise would have been the easy sale rather than the right one.",
+            "Limited money doesn't make prioritization less important. It makes it the entire job. When a client can afford one move, the only question worth answering is which move has the best chance of changing the business."
+          ]
+        },
+        {
+          "heading": "The decision: subtract before you add",
+          "paragraphs": [
+            "We reviewed the product line and the category. Popcorn kept coming back.",
+            "Three things drove the recommendation: she already made it exceptionally well, it was one of her most distinctive products on the shelf, and the category research we did at the time pointed to popcorn as the strongest opening for a distinctive position in a crowded sweets market.",
+            "So the recommendation wasn't “add popcorn.” She already had popcorn. It was to stop asking the market to hold everything at once and give it one thing to hold first.",
+            "That's an elimination decision as much as an addition. Focus is hard because it requires giving something up. It's also one of the highest-leverage moves available to a business with limited resources, because it didn't require Toya to invent a new capability. It required deciding which existing capability deserved more of her attention.",
+            "This reflects how we read the category during the engagement; we're not claiming the market was empty or that she had no competitors."
+          ]
+        },
+        {
+          "heading": "Then, and only then, the identity",
+          "paragraphs": [
+            "Once there was a decision to express, the identity had a job to do.",
+            "The previous presentation was loud, and it read as homemade in the way that undercuts a product rather than the way that sells it. Our assessment was that the packaging was telling a cheaper story than the product deserved.",
+            "The new identity was built to carry real South Louisiana character instead of generic big-box design cues, read as local and handmade in a way that signals craft rather than inexperience, use the pelican as a regional anchor with actual meaning behind it, lean on vintage and heritage typography for a more established feel, and sit quieter and more boutique, so the presentation matched the quality of what was inside the bag.",
+            "The sequence matters more than any single design choice: business problem, then product focus, then positioning, then identity. Design was the expression of the decision. It wasn't the decision."
+          ]
+        },
+        {
+          "heading": "What happened next",
+          "paragraphs": [
+            "Weeks after the identity shift, Toya texted Courtney directly. That's contemporaneous written evidence, not a testimonial written after the fact for the website."
+          ]
+        },
+        {
+          "heading": "What we can stand behind",
+          "paragraphs": [
+            "We're not going to put a percentage on this page.",
+            "There was no sales baseline, no revenue attribution, and no controlled comparison. What exists is a text message from the owner, reproduced exactly as she wrote it, reporting strong demand for the product we recommended emphasizing, after the shift.",
+            "Pelican has since expanded from a home-based operation into a brick-and-mortar storefront. We don't claim we caused that. She makes the popcorn. She runs the business. She sells it.",
+            "We'd rather show you a smaller claim we can stand behind than a bigger one we can't."
+          ]
+        },
+        {
+          "heading": "The point",
+          "paragraphs": [
+            "The most valuable thing a strategist can do is occasionally cost themselves the sale.",
+            "Toya wasn't wrong to want a website. She was solving for visibility when the constraint was distinction, and those problems feel identical from the inside. She saw the symptom. What she couldn't see from inside the business was the problem underneath it: before Pelican needed to be easier to find, it needed to be easier to understand.",
+            "Finding out which problem you actually have is the work. Everything after that is execution.",
+            "Most of the value in this engagement came from what we decided not to build."
+          ]
+        }
+      ],
+      "summary": "Pelican Sweets & Treats came to Schola for a website. We recommended focusing the business around one product instead, and weeks later the owner said popcorn was flying off the shelves.",
+      "quoteName": "LaToya Williams",
+      "quoteText": "You know when you right you right. Popcorn has flew off the shelves, 10 bags left. Restock day has people waiting to get their orders.",
+      "slug": "pelican-sweets",
+      "client": "Pelican Sweets & Treats",
+      "chapter": "A home-based sweets business making several products well, with nothing the market could easily hold onto.",
+      "highlightPhrase": "flying off the shelves",
+      "afterNote": "Client reported the popcorn selling out between restock days, with customers waiting for the next batch.",
+      "beforeNote": "“They did everything great and nothing special”, Courtney's assessment after reviewing the business.",
+      "quoteRole": "Owner, Pelican Sweets & Treats",
+      "photo": "/images/case-studies/pelican-cookies-cream-popcorn.jpg",
+      "photoAlt": "Cookies-and-cream popcorn from Pelican Sweets & Treats spilling out of a burlap-lined tin next to a stack of sandwich cookies.",
+      "secondaryPhoto": "",
+      "secondaryPhotoAlt": "",
+      "status": "published",
+      "title": "She Asked For a Website. We Told Her Not To Buy One.",
+      "titleHighlight": "Not To Buy One",
+      "after": "One product, popcorn, rebuilt into a complete South Louisiana identity system",
+      "industry": "Food & Beverage",
       "stats": [],
-      "before": ""
+      "before": "A home-based business making several good products, with no clear focus"
     },
     {
       "body": [],
