@@ -168,6 +168,8 @@
     object-position:center 30%;filter:grayscale(1);opacity:.3;}
   .case-row__bg::after{content:"";position:absolute;inset:0;
     background:linear-gradient(90deg,var(--row-bg) 0%,var(--row-bg) 38%,transparent 92%);}
+  .case-row__bg--placeholder{background-image:repeating-linear-gradient(135deg,
+    rgba(242,92,5,.1) 0 2px, transparent 2px 20px);}
 
   .case-row__inner{position:relative;z-index:1;max-width:680px;}
   .case-row__num{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;
@@ -470,7 +472,7 @@
     var colorClass = (index % 2 === 0) ? "case-row--black" : "case-row--white";
     var bg = cs.photo
       ? '<span class="case-row__bg" aria-hidden="true"><img src="' + escapeHtml(cs.photo) + '" alt=""></span>'
-      : '';
+      : '<span class="case-row__bg case-row__bg--placeholder" aria-hidden="true"></span>';
 
     if (cs.status !== "published") {
       return (

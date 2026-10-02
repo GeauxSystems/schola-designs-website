@@ -87,7 +87,24 @@ collections:
                 name: "photo"
                 widget: "image"
                 required: false
-                hint: "Shown faded and in black and white behind the card on the Case Studies page. Leave empty until there's a real photo of the actual deliverable; don't use a stock photo as a placeholder."
+                hint: "Used two places: faded and in black and white behind the card on the Case Studies page, and shown in full color at the top of this case study's own page. A candid, in-context shot (the client, the storefront, the actual deliverable) works better here than a posed headshot or stock photo. Leave empty and the page shows a \"Photo coming soon\" placeholder instead of a broken image."
+
+              - label: "Photo, alt text"
+                name: "photoAlt"
+                widget: "string"
+                required: false
+                hint: "A short, plain description for screen readers, e.g. \"LaToya Williams behind the counter at Pelican Sweets & Treats.\" Only needed if there's a photo above."
+
+              - label: "Second photo (optional)"
+                name: "secondaryPhoto"
+                widget: "image"
+                required: false
+                hint: "Optional. Shown partway down this case study's own page, not on the Case Studies list. Good for a shot of the finished deliverable itself (the website, the packaging, the brand system) if the first photo above is of the client or the business."
+
+              - label: "Second photo, alt text"
+                name: "secondaryPhotoAlt"
+                widget: "string"
+                required: false
 
               - label: "Before"
                 name: "before"

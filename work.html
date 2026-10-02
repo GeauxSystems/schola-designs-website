@@ -127,6 +127,23 @@
     font-size:var(--fs-display);line-height:var(--lh-display);letter-spacing:-.022em;max-width:20ch;}
   .proof__head .hi{color:var(--orange);}
 
+  /* ---------- case study photos (mobile first: full-width, 4:3; widens to 16:9 at desktop) ---------- */
+  .cs-photo{margin:clamp(28px,4.5vw,40px) 0 0;aspect-ratio:4/3;overflow:hidden;background:rgba(0,0,0,.04);}
+  .cs-photo img{width:100%;height:100%;object-fit:cover;}
+  .cs-photo--placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:clamp(10px,1.6vw,14px);border:2px dashed rgba(0,0,0,.16);padding:clamp(28px,5vw,40px);text-align:center;}
+  .cs-photo--placeholder svg{width:clamp(32px,6vw,40px);height:clamp(32px,6vw,40px);color:rgba(0,0,0,.28);}
+  .cs-photo--placeholder span{font-size:.74rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.14em;color:rgba(0,0,0,.38);}
+
+  .cs-photo-secondary{margin:clamp(34px,5vw,48px) 0 0;aspect-ratio:4/3;overflow:hidden;max-width:720px;}
+  .cs-photo-secondary img{width:100%;height:100%;object-fit:cover;}
+
+  @media (min-width:900px){
+    .cs-photo{aspect-ratio:16/9;}
+    .cs-photo-secondary{aspect-ratio:16/10;}
+  }
+
   .ba{list-style:none;margin:clamp(34px,5vw,60px) 0 0;padding:0;display:grid;gap:clamp(18px,2.4vw,26px);}
   .ba li{padding:clamp(24px,3.4vw,40px);}
   .ba__before{background:rgba(0,0,0,.05);}
@@ -326,6 +343,15 @@
   }
   html += '<h2 class="proof__head">' + highlight(cs.title, cs.titleHighlight) + '</h2>';
 
+  var photoIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">' +
+    '<rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10.5" r="1.6"/><path d="M21 16l-5.5-5.5L9 17"/></svg>';
+
+  if (cs.photo) {
+    html += '<figure class="cs-photo"><img src="' + escapeHtml(cs.photo) + '" alt="' + escapeHtml(cs.photoAlt || "") + '" loading="lazy"></figure>';
+  } else {
+    html += '<div class="cs-photo cs-photo--placeholder">' + photoIcon + '<span>Photo coming soon</span></div>';
+  }
+
   if (cs.before || cs.after) {
     html += '<ul class="ba">';
     html += '<li class="ba__before"><span class="ba__label">Before</span>' +
@@ -346,6 +372,10 @@
       '<figcaption><span><span class="receipt__who">' + escapeHtml(cs.quoteName || "") + '</span>' +
       '<span class="receipt__role">' + escapeHtml(cs.quoteRole || "") + '</span></span></figcaption>' +
       '</figure>';
+  }
+
+  if (cs.secondaryPhoto) {
+    html += '<figure class="cs-photo-secondary"><img src="' + escapeHtml(cs.secondaryPhoto) + '" alt="' + escapeHtml(cs.secondaryPhotoAlt || "") + '" loading="lazy"></figure>';
   }
 
   if (cs.stats && cs.stats.length) {
