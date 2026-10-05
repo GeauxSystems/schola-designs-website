@@ -466,6 +466,8 @@
     );
   }
 
+  // Only ever called with published case studies (see the filter below),
+  // so this renders the real card unconditionally.
   function renderCard(cs, index){
     var num = String(index + 1).padStart(2, "0");
     // Alternating rhythm: even index black, odd index white.
@@ -473,18 +475,6 @@
     var bg = cs.photo
       ? '<span class="case-row__bg" aria-hidden="true"><img src="' + escapeHtml(cs.photo) + '" alt=""></span>'
       : '<span class="case-row__bg case-row__bg--placeholder" aria-hidden="true"></span>';
-
-    if (cs.status !== "published") {
-      return (
-        '<li class="case-row ' + colorClass + ' case-row--placeholder">' +
-          '<div class="shell"><div class="case-row__inner">' +
-            '<span class="case-row__num">Case study ' + num + '</span>' +
-            '<p class="case-row__client">' + escapeHtml(cs.client || "Case study coming soon") + '</p>' +
-            '<span class="case-row__status">In progress</span>' +
-          '</div></div>' +
-        '</li>'
-      );
-    }
 
     return (
       '<li>' +
@@ -505,7 +495,13 @@
   fetch("/content/case-studies.json")
     .then(function(res){ return res.json(); })
     .then(function(data){
-      var list = data.case_studies || [];
+      // Only show finished work. Placeholder slots (status !== "published")
+      // stay in content/case-studies.json as reserved scaffolding for future
+      // case studies, but they're not ready to show visitors, so they're
+      // filtered out here instead of rendered as dimmed "in progress" rows.
+      var list = (data.case_studies || []).filter(function(cs){
+        return cs.status === "published";
+      });
       grid.innerHTML = list.map(renderCard).join("");
     })
     .catch(function(){
