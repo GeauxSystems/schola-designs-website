@@ -180,8 +180,8 @@
       "afterNote": "The brand and intake now reflect the adult-focused practice Lena set out to build.",
       "beforeNote": "A practice that hadn't clearly stated who it was for was going to keep being told who it was for by its inbox.",
       "quoteRole": "",
-      "photo": "",
-      "photoAlt": "",
+      "photo": "/images/case-studies/well-mind-site-desktop.jpg",
+      "photoAlt": "The Well Mind website shown on a laptop and phone, navy header, light blue hero section, and a portrait of Lena Turner.",
       "secondaryPhoto": "",
       "secondaryPhotoAlt": "",
       "status": "published",
@@ -190,7 +190,8 @@
       "after": "A brand, website, and intake process built to filter for the adult-focused practice Lena wanted",
       "industry": "Mental Health & Counseling",
       "stats": [],
-      "before": "A new practice shaped by whoever happened to call, with no stated focus of its own"
+      "before": "A new practice shaped by whoever happened to call, with no stated focus of its own",
+      "photoMobile": "/images/case-studies/well-mind-site-mobile.jpg"
     },
     {
       "body": [
