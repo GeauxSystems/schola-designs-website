@@ -18,13 +18,18 @@
     --lh-display:.94;
     --fs-close:clamp(1.4rem,5.5vw,2.5rem);
     --lh-close:1.05;
-    --fs-sub:clamp(1.14rem,4.4vw,1.5rem);
-    --fs-body:clamp(1.02rem,3.9vw,1.24rem);
+    --fs-sub:clamp(1.3rem,4.6vw,1.7rem);
+    --fs-body:clamp(1.08rem,4vw,1.3rem);
     --col-gap:clamp(28px,5vw,72px);
     --pad-section:clamp(64px,10vw,132px);
     --ease:160ms ease;
     --btn-pad:20px 34px;
-    --btn-gap:26px;}
+    --btn-gap:26px;
+    /* Single content-column rule for the case study template (2026-10):
+       one reading width, type sized up to match, so the column fills more
+       of the shell instead of leaving a dead margin at desktop. Line length
+       stays ~65-75 characters; only the column's physical size changed. */
+    --content-max:960px;}
 
   *,*::before,*::after{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
@@ -136,7 +141,7 @@
   .cs-photo--placeholder span{font-size:.74rem;font-weight:700;text-transform:uppercase;
     letter-spacing:.14em;color:rgba(0,0,0,.38);}
 
-  .cs-photo-secondary{margin:clamp(34px,5vw,48px) 0 0;aspect-ratio:4/3;overflow:hidden;max-width:720px;}
+  .cs-photo-secondary{margin:clamp(34px,5vw,48px) 0 0;aspect-ratio:4/3;overflow:hidden;max-width:var(--content-max);}
   .cs-photo-secondary img{width:100%;height:100%;object-fit:cover;}
 
   @media (min-width:900px){
@@ -160,7 +165,7 @@
   .receipt{margin:clamp(38px,5vw,64px) 0 0;}
   .receipt__mark{display:block;color:var(--orange);font-weight:800;line-height:.7;font-size:clamp(3rem,9vw,4.6rem);}
   .receipt blockquote{margin:clamp(6px,1vw,10px) 0 0;font-weight:500;font-style:italic;
-    font-size:clamp(1.14rem,4.4vw,1.6rem);line-height:1.42;max-width:44ch;}
+    font-size:clamp(1.2rem,4.6vw,1.75rem);line-height:1.46;max-width:min(70ch,var(--content-max));}
   .receipt figcaption{margin:clamp(20px,2.6vw,26px) 0 0;display:flex;align-items:center;gap:16px;}
   .receipt figcaption::before{content:"";width:34px;height:3px;background:var(--orange);flex:0 0 auto;}
   .receipt__who{font-weight:700;font-size:clamp(1rem,3.8vw,1.08rem);}
@@ -171,20 +176,21 @@
     .ba__arrow svg{transform:none;}
   }
 
-  .cs-stats{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  .cs-stats{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     border-top:1px solid rgba(0,0,0,.12);border-bottom:1px solid rgba(0,0,0,.12);
-    padding-block:clamp(22px,3vw,30px);margin:clamp(38px,5vw,56px) 0 0;max-width:720px;}
-  .cs-stat__value{font-size:1.9rem;font-weight:800;color:var(--orange);line-height:1;margin:0 0 6px;}
-  .cs-stat__label{font-size:.85rem;font-weight:600;color:rgba(0,0,0,.7);line-height:1.35;margin:0;}
+    padding-block:clamp(22px,3vw,30px);margin:clamp(38px,5vw,56px) 0 0;max-width:var(--content-max);}
+  .cs-stat__value{font-size:2.1rem;font-weight:800;color:var(--orange);line-height:1;margin:0 0 6px;}
+  .cs-stat__label{font-size:.92rem;font-weight:600;color:rgba(0,0,0,.7);line-height:1.35;margin:0;}
 
-  .cs-body{max-width:720px;margin:clamp(48px,6vw,68px) 0 0;}
+  .cs-body{max-width:var(--content-max);margin:clamp(48px,6vw,68px) 0 0;}
   .cs-body h2{font-size:var(--fs-sub);font-weight:800;letter-spacing:-.01em;
-    margin:clamp(30px,4vw,40px) 0 clamp(12px,1.8vw,16px);}
+    margin:clamp(34px,4.4vw,46px) 0 clamp(14px,2vw,18px);}
   .cs-body h2:first-child{margin-top:0;}
-  .cs-body p{font-size:var(--fs-body);font-weight:500;line-height:1.6;margin:0 0 clamp(14px,2vw,18px);}
+  .cs-body p{font-size:var(--fs-body);font-weight:500;line-height:1.68;margin:0 0 clamp(16px,2.2vw,20px);
+    max-width:76ch;}
 
   .cs-detail__cta{margin-top:clamp(40px,5.5vw,56px);padding-top:clamp(30px,4vw,40px);
-    border-top:1px solid rgba(0,0,0,.12);max-width:720px;}
+    border-top:1px solid rgba(0,0,0,.12);max-width:var(--content-max);}
 </style>
 </head>
 <body>
