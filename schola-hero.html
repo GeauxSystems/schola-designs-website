@@ -202,26 +202,6 @@
     font-size:clamp(.95rem,3.6vw,1.04rem);
     line-height:1.42;}
   .symptoms__text b{font-weight:700;}
-  /* maybe it's ... */
-  /* the guesses, answered directly below */
-  .guesses{margin:clamp(40px,5.5vw,70px) auto 0;
-    text-align:center;
-    font-weight:500;
-    font-size:var(--fs-sub);
-    line-height:1.5;
-    max-width:46ch;}
-  /* verdict */
-  .verdict{margin-top:clamp(22px,2.8vw,34px);text-align:center;}
-  .verdict p{margin:0;font-weight:800;text-transform:uppercase;line-height:1.04;letter-spacing:-.015em;}
-  .verdict__big{color:var(--orange);
-    font-size:clamp(2.3rem,10vw,4.4rem);
-    line-height:1;}
-  .verdict__mid{font-size:var(--fs-sub);
-    margin-top:.3em!important;}
-  .verdict__last{font-size:var(--fs-close);line-height:var(--lh-close);
-    margin-top:.18em!important;}
-  /* the marker sits lower here than in the hero: smaller type, tighter cap height */
-  .verdict .mark__rule{bottom:-.46em;}
   .reality__cta{margin-top:clamp(34px,4.6vw,48px);text-align:center;}
   .reality__cta .btn{width:100%;padding:var(--btn-pad);justify-content:center;gap:var(--btn-gap);}
   @media (min-width:900px){
@@ -605,10 +585,6 @@
     font-size:var(--fs-close);line-height:var(--lh-close);letter-spacing:-.015em;
   }
   .decision__line.is-orange{color:var(--orange);margin-top:clamp(46px,7vw,80px);}
-  .decision__guesses{
-    margin:clamp(14px,2vw,20px) 0 0;font-weight:500;
-    font-size:var(--fs-sub);color:rgba(255,255,255,.72);
-  }
   .decision__sub{
     margin:clamp(28px,4vw,40px) auto 0;font-weight:500;
     font-size:var(--fs-body);line-height:1.5;max-width:44ch;
@@ -835,20 +811,7 @@
       <li><span class="symptoms__no">06</span><span class="symptoms__text">You&rsquo;re spending on marketing, but <b>something isn&rsquo;t clicking.</b></span></li>
     </ol>
 
-    <p class="guesses">A new website? The logo? Better marketing?</p>
 
-    <div class="verdict">
-      <p class="verdict__big">Maybe.</p>
-      <p class="verdict__mid">But those are solutions.</p>
-      <p class="verdict__last">
-        <span class="mark">We haven&rsquo;t identified the problem yet.
-          <svg class="mark__rule" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6,11.6 C60,5.8 150,4.2 294,6.2"/>
-            <path d="M20,13.9 C80,9.2 172,8.2 286,10.1"/>
-          </svg>
-        </span>
-      </p>
-    </div>
 
     <div class="reality__cta">
       <a class="btn" href="/find-your-disconnect">Find Your Disconnect
@@ -1174,8 +1137,6 @@
   <div class="shell">
 
     <p class="decision__line" id="decision-line1">You can keep guessing.</p>
-    <p class="decision__guesses">Website? Logo? Marketing? Messaging?</p>
-
     <p class="decision__line is-orange">Or you can know what you&rsquo;re solving for.</p>
     <p class="decision__sub">Before you spend money changing the brand, know what actually needs to change.</p>
 
