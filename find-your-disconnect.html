@@ -216,6 +216,8 @@
     width:14px;height:2px;background:var(--orange);}
   .result__flagged-domain{font-size:.78rem;font-weight:800;text-transform:uppercase;
     letter-spacing:.1em;color:var(--orange);margin:0 0 6px;}
+  .result__flagged-check{font-size:.92rem;font-weight:600;line-height:1.5;margin:10px 0 0;max-width:56ch;color:rgba(255,255,255,.7);}
+  .result__flagged-check b{color:var(--orange);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;font-weight:800;margin-right:6px;}
   .result__flagged-text{font-size:var(--fs-body);font-weight:500;line-height:1.5;
     margin:0;max-width:56ch;}
   .result__bridge{font-size:.92rem;font-weight:600;font-style:italic;
@@ -475,11 +477,11 @@
       <section class="q" data-index="4" hidden>
         <p class="eyebrow">Identity</p>
         <fieldset>
-          <legend>Has your business changed in the last year or two in ways your brand hasn't caught up to?</legend>
+          <legend>Has your business changed in the last year or two in ways people haven't caught up to?</legend>
           <ul class="opt-list">
-            <li><label class="opt"><input class="opt__input" type="radio" name="q4" value="0"><span class="opt__text">No, they've grown together.</span></label></li>
+            <li><label class="opt"><input class="opt__input" type="radio" name="q4" value="0"><span class="opt__text">No. How people see us has kept pace.</span></label></li>
             <li><label class="opt"><input class="opt__input" type="radio" name="q4" value="1"><span class="opt__text">A little. Some things feel behind.</span></label></li>
-            <li><label class="opt"><input class="opt__input" type="radio" name="q4" value="2"><span class="opt__text">Yes. We've outgrown what we started with.</span></label></li>
+            <li><label class="opt"><input class="opt__input" type="radio" name="q4" value="2"><span class="opt__text">Yes. We've outgrown how people still see us.</span></label></li>
           </ul>
         </fieldset>
       </section>
@@ -488,11 +490,11 @@
       <section class="q" data-index="5" hidden>
         <p class="eyebrow">Internal alignment</p>
         <fieldset>
-          <legend>You're spending money on marketing. Is it working, or does something feel off?</legend>
+          <legend>Do your marketing, your sales conversations, and the work you deliver all tell the same story about who you are?</legend>
           <ul class="opt-list">
-            <li><label class="opt"><input class="opt__input" type="radio" name="q5" value="0"><span class="opt__text">It's working.</span></label></li>
-            <li><label class="opt"><input class="opt__input" type="radio" name="q5" value="1"><span class="opt__text">It's inconsistent.</span></label></li>
-            <li><label class="opt"><input class="opt__input" type="radio" name="q5" value="2"><span class="opt__text">We're spending, and it's still not clicking.</span></label></li>
+            <li><label class="opt"><input class="opt__input" type="radio" name="q5" value="0"><span class="opt__text">Yes. It's one consistent story.</span></label></li>
+            <li><label class="opt"><input class="opt__input" type="radio" name="q5" value="1"><span class="opt__text">Mostly, but they drift apart in places.</span></label></li>
+            <li><label class="opt"><input class="opt__input" type="radio" name="q5" value="2"><span class="opt__text">No. Each one tells a slightly different story.</span></label></li>
           </ul>
         </fieldset>
       </section>
@@ -527,7 +529,7 @@
         <div class="result__box">
           <h2 class="result__verdict">This doesn&rsquo;t look like a <span class="hi">brand problem</span>.</h2>
         </div>
-        <p class="result__body">What you've built and what people see are mostly lining up. If something still feels off, we'd guess it isn't your brand. That's not our department, but it's worth ruling out first.</p>
+        <p class="result__body">What you've built and what people see are mostly lining up. If something still feels off, we'd guess the cause is somewhere else, such as pricing, follow-up speed, or how many people you reach. That's outside what we do, but it's worth ruling out first.</p>
       </section>
 
       <!-- Result: Tier 2 -->
@@ -538,7 +540,7 @@
         <div class="result__box">
           <div class="result__flagged" id="flaggedListT2"></div>
         </div>
-        <p class="result__body">We don't want you to take these results lightly, or overreact to them. The symptoms don't automatically tell us the diagnosis.</p>
+        <p class="result__body">None of this is an emergency. A gap this size costs little today. It costs more each time you build something new on top of it, because the new thing inherits the gap. If these sound like your business, the sensible next step is a closer look. A few quick questions will tell us whether the Brand Fact-Check fits.</p>
         <div class="result__cta">
           <a class="btn" id="t2Cta" href="/fit-assessment">Worth a closer look
             <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -551,11 +553,11 @@
         <p class="eyebrow result__eyebrow">Your result</p>
         <h2 class="result__verdict">This looks like <span class="hi">Fact-Check territory</span>.</h2>
         <p class="result__body">Based on your answers, this is a break-the-glass moment.</p>
-        <p class="result__body">What you've built and what the market sees have drifted apart in more places than one. This is exactly the gap the Brand Fact-Check exists to find.</p>
+        <p class="result__body">What you've built and what your customers see have drifted apart in more than one place. That is the gap the Brand Fact-Check exists to find.</p>
         <div class="result__box">
           <div class="result__flagged" id="flaggedListT3"></div>
         </div>
-        <p class="result__body">Don't panic and start throwing good money at the wrong fix before you know if it's even the issue. This is what a Brand Fact-Check is built to find.</p>
+        <p class="result__body">Before you spend on a fix, find out which of these is the cause. Guessing wrong is the expensive part. The Fact-Check finds the cause first, and tells you plainly if it isn't what you expected. The next step is a few quick questions to see if we're a fit. If it looks right, you book a call.</p>
         <div class="result__cta">
           <a class="btn" id="t3Cta" href="/fit-assessment">See if we&rsquo;re a fit
             <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -607,61 +609,77 @@
   // was flagged.
   var DOMAIN_COPY = {
     "Experience and conversion": {
-      1: "Your online presence is a step behind, representing the business you ran a year ago rather than the one you're running now.",
-      2: "You said it yourself: what people find doesn't match what you actually do. That gap costs you before a conversation even starts. Every visitor who underestimates you is one you have to win over twice."
+      1: "Your online presence is a step behind. It shows the business you ran a year ago, not the one you run today.",
+      2: "You said people are surprised by how much you actually do. Each of them formed an opinion before the surprise, and that first opinion was lower than it should have been. Time spent winning that ground back is time not spent building on it."
     },
     "Messaging and proof": {
-      1: "They'd get the basics. The parts that make you different from everyone doing something similar aren't landing in that first look.",
-      2: "A stranger spending sixty seconds on you walks away assuming that's the whole business, because nothing told them otherwise."
+      1: "They'd get the basics. The parts that set you apart from others doing similar work aren't landing in the first look.",
+      2: "You hear “I didn't know you did that” constantly. Every time, there was a moment when that person could have bought more, or bought sooner, and didn't know to."
     },
     "Positioning": {
-      1: "You're getting a mix. Some of it is exactly who you want, some of it isn't, and there's no clear reason either way.",
-      2: "The customers you're attracting aren't the ones you actually want more of. From the outside, the business looks built for someone else."
+      1: "You get a mix. Some of it is exactly who you want, some isn't, and there's no clear reason for either.",
+      2: "You're attracting the wrong customers more than you'd like. Customers who don't fit tend to take more of your time and push harder on price, which leaves less room for the ones who do."
     },
     "Offer presentation": {
-      1: "It happens sometimes. You can usually guess why, but not clearly enough to do anything about it.",
-      2: "A competitor who isn't better than you keeps getting picked anyway, and you can't say why. That's money walking past you for reasons you haven't identified."
+      1: "It happens sometimes. You can usually guess why, but not clearly enough to act on.",
+      2: "Someone who isn't better than you keeps getting picked, and you can't say why. If you can't name the reason, you can't fix it, and every lost deal teaches you nothing."
     },
     "Identity": {
-      1: "The brand's a little behind where the business actually is. Not a total mismatch, just enough of a lag to notice.",
-      2: "The business has changed and the brand hasn't kept up. People are meeting the version of you from a year or two ago."
+      1: "What you present is a little behind what you've become. Not a mismatch yet, but enough of a lag to notice.",
+      2: "The business has changed and the way you show up hasn't. People are meeting the version of you from a year or two ago, and everything new you add inherits that gap."
     },
     "Internal alignment": {
-      1: "Some of the spend works, some doesn't, and there's no clear pattern to which is which.",
-      2: "Money's going out and you can't tell if it's working. Usually that means the spend doesn't know who it's supposed to be reaching."
+      1: "Your marketing, your sales conversations, and your delivery drift apart in places. The differences are small, but customers notice when what they were told and what they got don't match.",
+      2: "Each part of the business tells a slightly different story. A customer hears one promise in your marketing, another on a sales call, and experiences a third. More marketing on top of that repeats the inconsistency to more people."
     }
   };
 
-  // Causal order for the Tier 3 synthesis: identity drift feeds positioning
-  // drift, which shows up in experience/messaging, which explains lost
-  // offers, which shows up last as unaccountable marketing spend.
+  // A self-check per domain: something the visitor can do in a few minutes
+  // with no help from us, so the result is useful even if they never click
+  // through. Same text for both severities.
+  var DOMAIN_CHECK = {
+    "Experience and conversion": "Look yourself up the way a stranger would. Write down what you'd assume the business does and what it costs. Compare that to the truth.",
+    "Messaging and proof": "Ask three recent customers to describe what you do in their own words. Where their answer differs from yours is the gap.",
+    "Positioning": "List your last ten customers. Mark the ones you'd want ten more of. Then look at what the marked ones saw before they contacted you.",
+    "Offer presentation": "Take the last two deals you lost. Ask the customer, or put both offers side by side as a stranger would. Find what made the other one look clearer or safer.",
+    "Identity": "Write down three things that are true of your business today and weren't two years ago. Check whether your site, your pitch, and your materials say them.",
+    "Internal alignment": "Put your homepage headline, the first thing you say on a sales call, and the first thing a new customer receives side by side. See if they make the same promise."
+  };
+
+  // Causal order for the Tier 3 synthesis: an outdated or inconsistent story
+  // (identity, internal alignment) feeds who you attract (positioning),
+  // which shows up in what people find and understand (experience,
+  // messaging), which explains the deals lost (offer presentation).
   var CAUSAL_ORDER = [
     "Identity",
+    "Internal alignment",
     "Positioning",
     "Experience and conversion",
     "Messaging and proof",
-    "Offer presentation",
-    "Internal alignment"
+    "Offer presentation"
   ];
 
-  // Bridge sentences inserted between two flagged domains that are adjacent
-  // in CAUSAL_ORDER. Built as a lookup table (not generated per-combination)
-  // because six domains produce too many combinations to hand-write a
-  // bespoke paragraph for each one.
-  var BRIDGES = {
-    "Identity|Positioning": "A brand that's lagging behind the business keeps pulling in the kind of customer who wanted its earlier version.",
-    "Positioning|Experience and conversion": "Attracting the wrong customers and undershooting your own capability online are usually the same gap, visible from two angles.",
-    "Experience and conversion|Messaging and proof": "Undershooting what you do online and undershooting it face to face are usually the same gap, just caught at two different moments.",
-    "Positioning|Messaging and proof": "Attracting the wrong customers and undershooting your own capability online are usually the same gap, visible from two angles.",
-    "Positioning|Offer presentation": "When customers can't fully see what you do, losing a deal to a weaker competitor stops being rare.",
-    "Messaging and proof|Offer presentation": "When customers can't fully see what you do, losing a deal to a weaker competitor stops being rare.",
-    "Experience and conversion|Offer presentation": "When customers can't fully see what you do, losing a deal to a weaker competitor stops being rare.",
-    "Identity|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
-    "Positioning|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
-    "Experience and conversion|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
-    "Messaging and proof|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet.",
-    "Offer presentation|Internal alignment": "This usually shows up as marketing spend that can't prove itself, pointed at a target nobody's defined yet."
+  // Bridge sentences inserted between consecutive flagged domains, keyed by
+  // "earlier|later" in CAUSAL_ORDER. Built from a small set of sentences
+  // keyed by the later domain, because six domains produce too many
+  // combinations to hand-write a bespoke paragraph for each one.
+  var BRIDGE_TEXT = {
+    "Internal alignment": "A business that has changed but still tells its old story usually ends up telling several versions of it at once.",
+    "Positioning": "When what you say is outdated or inconsistent, you attract a mix of who you used to serve and who you want now.",
+    "Experience and conversion": "That shows up the first time someone looks you up: they see less than what you've built.",
+    "Messaging and proof": "A story that is outdated or inconsistent is hard to state clearly, so the parts that set you apart get lost.",
+    "Offer presentation": "When customers can't fully see what you do, losing a deal to a weaker competitor stops being rare."
   };
+  var SAME_GAP = "Attracting the wrong customers and undershooting what you do online are usually the same gap, seen from two angles.";
+  var BRIDGES = {};
+  CAUSAL_ORDER.forEach(function(a, i){
+    CAUSAL_ORDER.slice(i + 1).forEach(function(b){
+      BRIDGES[a + "|" + b] = BRIDGE_TEXT[b];
+    });
+  });
+  BRIDGES["Positioning|Experience and conversion"] = SAME_GAP;
+  BRIDGES["Positioning|Messaging and proof"] = SAME_GAP;
+  BRIDGES["Experience and conversion|Messaging and proof"] = "Undershooting what you do online and undershooting it face to face are usually the same gap, caught at two different moments.";
 
   function closingLine(count){
     if (count === 2) return "Two symptoms. Worth tracing to one source.";
@@ -802,6 +820,13 @@
     text.textContent = DOMAIN_COPY[domain][severity];
     item.appendChild(label);
     item.appendChild(text);
+    var check = document.createElement("p");
+    check.className = "result__flagged-check";
+    var tag = document.createElement("b");
+    tag.textContent = "Check this";
+    check.appendChild(tag);
+    check.appendChild(document.createTextNode(" " + DOMAIN_CHECK[domain]));
+    item.appendChild(check);
     container.appendChild(item);
   }
 
@@ -929,7 +954,7 @@
     var tier;
     if (severeCount === 0 && flaggedCount <= 1) {
       tier = 1;
-    } else if (severeCount >= 2 || flaggedCount >= 4) {
+    } else if (severeCount >= 2 || (severeCount >= 1 && flaggedCount >= 5)) {
       tier = 3;
     } else {
       tier = 2;
