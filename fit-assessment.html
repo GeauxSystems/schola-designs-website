@@ -789,11 +789,8 @@
     fill("gateFirstName", saved.firstName);
     fill("gateEmail", saved.email);
     fill("gatePhone", saved.phone);
-    // Consent was given on the quiz with this same wording. It stays visibly
-    // checked here so the visitor can see it and undo it.
-    if (saved.phone && saved.consent) {
-      document.getElementById("gateConsent").checked = true;
-    }
+    // Consent is deliberately NOT carried over. A prefilled number still needs
+    // a fresh, visible tick before we call or text it.
   }
 
   var gateForm = document.getElementById("gateForm");
