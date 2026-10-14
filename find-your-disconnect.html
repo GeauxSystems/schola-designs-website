@@ -281,6 +281,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="8a9c19c9-53c0-4e16-a23e-f9a1c855be70"></script>
+<script defer src="/track.js"></script>
 </head>
 <body>
 
@@ -693,6 +695,15 @@
   var current = 0;
   var onGate = false;
 
+  // Analytics: each step event fires once per visit, even if the visitor goes
+  // back and changes an answer, so the funnel counts people, not clicks.
+  var firedEvents = {};
+  function trackOnce(name, data){
+    if (firedEvents[name]) return;
+    firedEvents[name] = true;
+    if (window.scholaTrack) window.scholaTrack(name, data);
+  }
+
   var qSections = Array.prototype.slice.call(document.querySelectorAll(".q"));
   var gate = document.querySelector(".gate");
   var intro = document.getElementById("intro");
@@ -741,6 +752,7 @@
     backBtn.hidden = false;
     gate.hidden = false;
     onGate = true;
+    trackOnce("disconnect-gate-viewed");
     var emailInput = document.getElementById("gateEmail");
     if (emailInput) { emailInput.focus(); }
   }
@@ -750,6 +762,7 @@
     if (!input.classList.contains("opt__input")) return;
     var index = parseInt(input.closest(".q").getAttribute("data-index"), 10);
     answers[index] = parseInt(input.value, 10);
+    trackOnce("disconnect-q" + (index + 1));
 
     var sec = qSections[index];
     sec.querySelectorAll(".opt").forEach(function(lbl){ lbl.classList.remove("is-selected"); });
@@ -968,6 +981,10 @@
       tier: tier,
       flaggedDomains: domains
     });
+
+    // Only the verdict tier and flagged-domain count are sent to analytics.
+    // The email, phone, and individual answers never are.
+    trackOnce("disconnect-completed", {tier: tier, flagged: flaggedCount});
 
     showResult(tier, domainDetails);
   });
