@@ -506,6 +506,11 @@
         <h2 class="gate__head">See your <span class="mark">full read<svg class="mark__rule" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M6,11.6 C60,5.8 150,4.2 294,6.2"/><path d="M20,13.9 C80,9.2 172,8.2 286,10.1"/></svg></span>.</h2>
         <form id="gateForm" novalidate>
           <div class="gate__field">
+            <label class="gate__label" for="gateFirstName">First name</label>
+            <input class="gate__input" type="text" id="gateFirstName" name="firstName" required maxlength="60" autocomplete="given-name">
+          </div>
+          <p class="gate__error" id="gateNameError" hidden>Enter your first name.</p>
+          <div class="gate__field">
             <label class="gate__label" for="gateEmail">Email</label>
             <input class="gate__input" type="email" id="gateEmail" name="email" required autocomplete="email">
           </div>
@@ -753,8 +758,8 @@
     gate.hidden = false;
     onGate = true;
     trackOnce("disconnect-gate-viewed");
-    var emailInput = document.getElementById("gateEmail");
-    if (emailInput) { emailInput.focus(); }
+    var nameInput = document.getElementById("gateFirstName");
+    if (nameInput) { nameInput.focus(); }
   }
 
   function handleOptionChange(e){
@@ -926,16 +931,32 @@
   }
   // -------------------------------------------------------------------------
 
+  // Contact details are kept in this tab's sessionStorage so the Fit Assessment
+  // can pre-fill them. They never go in the URL or in analytics, and the Fit
+  // Assessment clears them once it has submitted.
+  function saveContact(c){
+    try { sessionStorage.setItem("scholaContact", JSON.stringify(c)); } catch (err) { /* storage may be blocked */ }
+  }
+
   var gateForm = document.getElementById("gateForm");
   var gateError = document.getElementById("gateError");
+  var gateNameError = document.getElementById("gateNameError");
   var gateConsentError = document.getElementById("gateConsentError");
 
   gateForm.addEventListener("submit", function(e){
     e.preventDefault();
+    var firstName = document.getElementById("gateFirstName").value.trim();
     var email = document.getElementById("gateEmail").value.trim();
     var phone = document.getElementById("gatePhone").value.trim();
     var consent = document.getElementById("gateConsent").checked;
     var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!firstName) {
+      gateNameError.hidden = false;
+      document.getElementById("gateFirstName").focus();
+      return;
+    }
+    gateNameError.hidden = true;
 
     if (!validEmail) {
       gateError.hidden = false;
@@ -973,7 +994,10 @@
       tier = 2;
     }
 
+    saveContact({firstName: firstName, email: email, phone: phone, consent: phone ? consent : false});
+
     submitToGHL({
+      firstName: firstName,
       email: email,
       phone: phone || null,
       phoneConsent: phone ? consent : null,

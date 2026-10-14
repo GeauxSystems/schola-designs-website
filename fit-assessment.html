@@ -463,6 +463,11 @@
         <h2 class="gate__head">One last step.</h2>
         <form id="gateForm" novalidate>
           <div class="gate__field">
+            <label class="gate__label" for="gateFirstName">First name</label>
+            <input class="gate__input" type="text" id="gateFirstName" name="firstName" required maxlength="60" autocomplete="given-name">
+          </div>
+          <p class="gate__error" id="gateNameError" hidden>Enter your first name.</p>
+          <div class="gate__field">
             <label class="gate__label" for="gateEmail">Email</label>
             <input class="gate__input" type="email" id="gateEmail" name="email" required autocomplete="email">
           </div>
@@ -606,8 +611,16 @@
     gate.hidden = false;
     onGate = true;
     trackOnce("fit-gate-viewed");
-    var emailInput = document.getElementById("gateEmail");
-    if (emailInput) { emailInput.focus(); }
+    prefillGate();
+    var order = ["gateFirstName", "gateEmail"];
+    var target = null;
+    for (var i = 0; i < order.length; i++) {
+      var el = document.getElementById(order[i]);
+      if (el && !el.value) { target = el; break; }
+    }
+    // Everything already known: put focus on the button so one tap continues.
+    if (!target) { target = gate.querySelector("button[type=submit]"); }
+    if (target) { target.focus(); }
   }
 
   function handleOptionChange(e){
@@ -754,16 +767,54 @@
   }
   // -------------------------------------------------------------------------
 
+  // Details given on Find Your Disconnect are kept in this tab's sessionStorage
+  // (never in the URL or analytics). They pre-fill the gate so a visitor who
+  // came through the quiz does not type them again. Cleared after submit.
+  function loadContact(){
+    try {
+      var raw = sessionStorage.getItem("scholaContact");
+      return raw ? JSON.parse(raw) : null;
+    } catch (err) { return null; }
+  }
+  function clearContact(){
+    try { sessionStorage.removeItem("scholaContact"); } catch (err) { /* ignore */ }
+  }
+  function prefillGate(){
+    var saved = loadContact();
+    if (!saved) return;
+    var fill = function(id, val){
+      var el = document.getElementById(id);
+      if (el && !el.value && val) { el.value = val; }
+    };
+    fill("gateFirstName", saved.firstName);
+    fill("gateEmail", saved.email);
+    fill("gatePhone", saved.phone);
+    // Consent was given on the quiz with this same wording. It stays visibly
+    // checked here so the visitor can see it and undo it.
+    if (saved.phone && saved.consent) {
+      document.getElementById("gateConsent").checked = true;
+    }
+  }
+
   var gateForm = document.getElementById("gateForm");
   var gateError = document.getElementById("gateError");
+  var gateNameError = document.getElementById("gateNameError");
   var gateConsentError = document.getElementById("gateConsentError");
 
   gateForm.addEventListener("submit", function(e){
     e.preventDefault();
+    var firstName = document.getElementById("gateFirstName").value.trim();
     var email = document.getElementById("gateEmail").value.trim();
     var phone = document.getElementById("gatePhone").value.trim();
     var consent = document.getElementById("gateConsent").checked;
     var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!firstName) {
+      gateNameError.hidden = false;
+      document.getElementById("gateFirstName").focus();
+      return;
+    }
+    gateNameError.hidden = true;
 
     if (!validEmail) {
       gateError.hidden = false;
@@ -784,6 +835,7 @@
     var outcome = determineOutcome();
 
     submitToGHL({
+      firstName: firstName,
       email: email,
       phone: phone || null,
       phoneConsent: phone ? consent : null,
@@ -804,6 +856,8 @@
     // Only the outcome and where the visitor came from are sent to analytics.
     // The email, phone, and individual answers never are.
     trackOnce("fit-completed", {outcome: outcome, from: referral.source || "direct"});
+
+    clearContact();
 
     showResult(outcome);
   });
