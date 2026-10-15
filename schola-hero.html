@@ -107,6 +107,15 @@
     color:var(--black);text-decoration:none;border-bottom:2px solid var(--black);padding-bottom:6px;}
   .hero__secondary-link:hover{border-bottom-color:var(--orange);}
   .hero__secondary-link svg{width:22px;height:8px;flex:0 0 auto;}
+  /* transitional (secondary) action: a text link that takes its section's text
+     color, so it reads on light and dark sections and never matches the primary button */
+  .cta-secondary{display:inline-flex;align-items:center;gap:10px;
+    font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;
+    color:inherit;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:6px;}
+  .cta-secondary:hover{border-bottom-color:var(--orange);}
+  .cta-secondary svg{width:22px;height:8px;flex:0 0 auto;}
+  .offer__secondary{margin:16px 0 0;text-align:center;}
+  .gap .cta-secondary{margin-top:clamp(24px,3.4vw,34px);}
   /* ---------- orange form + portrait slot ---------- */
   .figure{position:relative;
     justify-self:center;
@@ -816,8 +825,8 @@
 
 
     <div class="reality__cta">
-      <a class="btn" href="/find-your-disconnect">Find Your Disconnect
-        <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <a class="cta-secondary" href="/find-your-disconnect">Find Your Disconnect
+        <svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
       </a>
     </div>
 
@@ -900,8 +909,8 @@
     <div class="gap">
       <h3 class="gap__head">The gap is where things get <span class="hi">interesting.</span></h3>
       <p class="gap__payoff">Close it, and the market stops guessing what you&rsquo;re worth. And the next investment, whether that&rsquo;s a rebrand, a new market, or a next chapter, has a reason behind it instead of a guess.</p>
-      <a class="btn" href="#fact-check">Explore the Brand Fact-Check
-        <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <a class="cta-secondary" href="#fact-check">See what the Fact-Check examines
+        <svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
       </a>
     </div>
 
@@ -948,8 +957,8 @@
     </figure>
 
     <p class="proof__cta">
-      <a class="btn" href="/work/pelican-sweets">See the full Pelican story
-        <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <a class="cta-secondary" href="/work/pelican-sweets">See the full Pelican story
+        <svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
       </a>
     </p>
 
@@ -965,7 +974,7 @@
       The Brand<br><span class="hi">Fact-Check<span>.</span></span>
     </h2>
 
-    <p class="offer__def">A paid strategic diagnostic for proven businesses in transition. It identifies the gap between the value you&rsquo;ve built and the value your brand communicates, determines what&rsquo;s causing it, and prescribes what should change before you invest in execution.</p>
+    <p class="offer__def">A paid strategic diagnostic for proven businesses in transition. It identifies the gap between the value you&rsquo;ve built and the value your brand communicates, shows what the evidence supports about why, and prescribes what should change before you invest in execution.</p>
 
     <div class="examined">
       <p class="examined__label">What gets examined</p>
@@ -997,8 +1006,13 @@
     </div>
 
     <p class="offer__cta">
-      <a class="btn" href="/fact-check">Start Fact-Check
+      <a class="btn" href="/fit-assessment">See if we&rsquo;re a fit
         <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+    </p>
+    <p class="offer__secondary">
+      <a class="cta-secondary" href="/fact-check">See how the Fact-Check works
+        <svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
       </a>
     </p>
 
@@ -1125,8 +1139,8 @@
       </div>
 
       <p class="guide__cta">
-        <a class="btn" href="/about">Meet Courtney
-          <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <a class="cta-secondary" href="/about">Meet Courtney
+          <svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
         </a>
       </p>
     </div>

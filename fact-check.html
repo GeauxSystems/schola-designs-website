@@ -118,7 +118,7 @@
   .page__title .hi{color:var(--orange);}
 
   .page__lede{font-size:var(--fs-sub);font-weight:600;line-height:1.4;
-    max-width:56ch;margin:0 0 clamp(40px,5.5vw,56px);}
+    max-width:56ch;margin:0 0 clamp(22px,3vw,30px);}
 
   .block{margin:0 0 clamp(48px,6.5vw,72px);}
   .block__head{font-size:var(--fs-close);line-height:var(--lh-close);
@@ -154,6 +154,8 @@
   .honest{border-left:3px solid var(--orange);padding-left:clamp(18px,2.6vw,24px);}
 
   .page__cta{margin-top:clamp(12px,2vw,20px);}
+  .page__cta--top{margin:0 0 clamp(40px,5.5vw,56px);}
+  .page__next{font-size:var(--fs-body);font-weight:500;line-height:1.55;max-width:56ch;margin:0 0 clamp(16px,2.4vw,22px);}
 
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
@@ -323,11 +325,16 @@
       <p class="eyebrow">The diagnostic</p>
       <h1 class="page__title">The Brand<br><span class="hi">Fact-Check.</span></h1>
       <p class="page__lede">A paid strategic diagnostic for proven businesses in transition. Before you spend on a rebrand, a new site, or more marketing, this finds out whether that spend is actually solving the right problem.</p>
+      <p class="page__cta page__cta--top">
+        <a class="btn" href="/fit-assessment">See if we&rsquo;re a fit
+          <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+      </p>
 
       <div class="block">
         <h2 class="block__head">What it is</h2>
-        <p>The Brand Fact-Check identifies the gap between the value you&rsquo;ve built and the value your brand actually communicates, determines what&rsquo;s causing it, and prescribes what should change before you invest in execution.</p>
-        <p>It is not a rebrand, and it doesn&rsquo;t assume you need one. It&rsquo;s an investigation. Sometimes the finding is that branding isn&rsquo;t your problem at all, and we&rsquo;ll tell you that too.</p>
+        <p>The Brand Fact-Check identifies the gap between the value you&rsquo;ve built and the value your brand actually communicates, shows what the evidence supports about why, and prescribes what should change before you invest in execution.</p>
+        <p>It is not a rebrand, and it doesn&rsquo;t assume you need one. It&rsquo;s an investigation. Sometimes the evidence says branding isn&rsquo;t the first problem, and we&rsquo;ll tell you that too.</p>
 
         <div class="examined">
           <p class="examined__label">What gets examined</p>
@@ -347,15 +354,15 @@
         <ol class="steps">
           <li>
             <p class="steps__head">We look at the evidence</p>
-            <p>Your site, your materials, how you&rsquo;re actually showing up, and how customers describe you in their own words, not how you describe yourselves.</p>
+            <p>Your site, your materials, how you&rsquo;re actually showing up, and the customer language that already exists, such as public reviews, not how you describe yourselves. We don&rsquo;t interview your customers. Where evidence is missing, the report says so instead of guessing.</p>
           </li>
           <li>
             <p class="steps__head">We map it against the six domains</p>
-            <p>Each one gets checked against what we find, not against a generic checklist. Some domains may turn out fine. We only flag what the evidence actually supports.</p>
+            <p>Each one is checked against a defined set of questions and the evidence we find for your business. Some domains may turn out fine. We only flag what the evidence supports.</p>
           </li>
           <li>
             <p class="steps__head">You get a diagnosis and a prescription</p>
-            <p>A clear, specific read on what&rsquo;s actually creating the gap, and what should change to close it, in plain language, not an agency pitch.</p>
+            <p>A clear, specific read on what the evidence supports about the gap, and what should change to close it, in plain language, not an agency pitch.</p>
           </li>
           <li>
             <p class="steps__head">You decide what happens next</p>
@@ -366,7 +373,7 @@
 
       <div class="block">
         <h2 class="block__head">What you walk away with</h2>
-        <p>A written diagnosis and prescription: what&rsquo;s working, what&rsquo;s creating the disconnect, and specifically what to change and why. It's yours whether or not you ever hire Schola to implement it.</p>
+        <p>A written diagnosis and prescription: what&rsquo;s working, what the evidence says is behind the disconnect, and specifically what to change and why. If no brand change is warranted, it says that. It's yours whether or not you ever hire Schola to implement it.</p>
       </div>
 
       <div class="block honest">
@@ -375,7 +382,8 @@
       </div>
 
       <div class="page__cta">
-        <a class="btn" href="/fit-assessment">Start Fact-Check
+        <p class="page__next">Next step: a few quick questions to see if we&rsquo;re a fit. If it looks right, you book a call.</p>
+        <a class="btn" href="/fit-assessment">See if we&rsquo;re a fit
           <svg class="btn__arrow" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h31M26 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
         </a>
       </div>
