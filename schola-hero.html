@@ -53,8 +53,11 @@
     background:var(--orange);color:var(--white);text-decoration:none;
     font-weight:700;text-transform:uppercase;letter-spacing:.14em;
     line-height:1;border:0;}
-  .btn{transition:background var(--ease);}
+  .btn{transition:background var(--ease),box-shadow var(--ease);}
   .btn:hover{background:var(--black);}
+  .reality .btn:hover,.framework .btn:hover,.offer .btn:hover,.fit .btn:hover,.decision .btn:hover,.menu .btn:hover{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px var(--orange);}
+  .cta-secondary,.hero__secondary-link{position:relative;}
+  .cta-secondary::before,.hero__secondary-link::before{content:"";position:absolute;inset:-12px -8px;}
   .btn__arrow{width:34px;height:12px;flex:0 0 auto;}
   .btn--hero{width:100%;padding:var(--btn-pad);font-size:clamp(.8rem,2.9vw,1rem);justify-content:center;gap:var(--btn-gap);}
   .btn--nav{padding:14px 22px;font-size:.72rem;letter-spacing:.16em;gap:0;}
